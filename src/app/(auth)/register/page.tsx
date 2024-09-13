@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { signIn } from "next-auth/react";  
+
 
 const Register = () => {
   const [fullName, setFullName] = useState("");
@@ -9,6 +11,11 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleGoogleSignIn = () => {
+    signIn("google", { callbackUrl: "/" }, );  
+    console.log("userdetails")
+  };
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,7 +35,10 @@ const Register = () => {
           Let's create an account
         </p>
 
-        <button className="w-full py-2 mt-4 text-sm font-medium  rounded-lg text-gray-200 bg-gray-700">
+        <button
+          onClick={handleGoogleSignIn}  
+          className="w-full py-2 mt-4 text-sm font-medium text-white bg-gray-600 border border-gray-700 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+        >
           <span className="inline-flex items-center">
             <img
               className="w-5 h-5 mr-2"
@@ -62,7 +72,7 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-gray-200 border-gray-600"
           />
-        
+
           <input
             type="password"
             placeholder="Your Password"
@@ -88,9 +98,7 @@ const Register = () => {
         <Link href="/login">
           <p className="mt-4 text-sm text-center  text-gray-200">
             Already have an account?{" "}
-            <span className=" hover:underline text-blue-400">
-              Sign In
-            </span>
+            <span className=" hover:underline text-blue-400">Sign In</span>
           </p>
         </Link>
       </div>

@@ -9,6 +9,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      
       fontFamily: {
         "martian-mono": ['"Martian Mono"', "monospace"],
       },

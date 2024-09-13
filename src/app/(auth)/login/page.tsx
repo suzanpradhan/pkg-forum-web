@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { signIn } from "next-auth/react";  
 import Link from "next/link";
 
 const Login = () => {
@@ -8,8 +9,12 @@ const Login = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+   
   };
-
+  const handleGoogleSignIn = () => {
+    signIn("google", { callbackUrl: "/" }, );  
+    console.log("userdetails")
+  };
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#1E1F23]">
       <div className="w-full max-w-md p-8 space-y-4 bg-gray-800 border border-gray-700 rounded-lg shadow-2xl sm:p-10">
@@ -20,7 +25,10 @@ const Login = () => {
           Sign in by entering the information below
         </p>
 
-        <button className="w-full py-2 mt-4 text-sm font-medium text-white bg-gray-600 border border-gray-700 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+        <button
+          onClick={handleGoogleSignIn}  
+          className="w-full py-2 mt-4 text-sm font-medium text-white bg-gray-600 border border-gray-700 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+        >
           <span className="inline-flex items-center">
             <img
               className="w-5 h-5 mr-2"
@@ -30,7 +38,6 @@ const Login = () => {
             Continue with Google
           </span>
         </button>
-
         <div className="flex items-center justify-between mt-4">
           <span className="w-1/5 border-b border-gray-500 lg:w-1/4"></span>
           <span className="text-xs text-white uppercase">
