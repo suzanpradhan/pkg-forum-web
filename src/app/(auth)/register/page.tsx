@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { signIn } from "next-auth/react";  
-
+import { signIn } from "next-auth/react";
 
 const Register = () => {
   const [fullName, setFullName] = useState("");
@@ -13,8 +12,8 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleGoogleSignIn = () => {
-    signIn("google", { callbackUrl: "/" }, );  
-    console.log("userdetails")
+    signIn("google", { callbackUrl: "/" });
+    console.log("userdetails");
   };
 
   const handleRegister = async (e: React.FormEvent) => {
@@ -26,7 +25,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#1E1F23]">
+    <div className="flex items-center justify-center max-h-full bg-[#1E1F23]">
       <div className="w-full max-w-md p-8 space-y-4 rounded-lg shadow-2xl bg-gray-800 border-gray-700">
         <h2 className="text-2xl font-bold text-center  text-white">
           Registration
@@ -36,7 +35,7 @@ const Register = () => {
         </p>
 
         <button
-          onClick={handleGoogleSignIn}  
+          onClick={handleGoogleSignIn}
           className="w-full py-2 mt-4 text-sm font-medium text-white bg-gray-600 border border-gray-700 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
         >
           <span className="inline-flex items-center">

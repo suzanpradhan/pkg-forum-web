@@ -12,6 +12,7 @@ module.exports = {
       
       fontFamily: {
         "martian-mono": ['"Martian Mono"', "monospace"],
+        "satoshi": ['Satoshi', 'sans-serif']
       },
     },
   },
