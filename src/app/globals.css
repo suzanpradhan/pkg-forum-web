@@ -10,3 +10,16 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+.rdw-editor-toolbar > div > div {
+  background-color: black !important;
+}
+
+.rdw-editor-toolbar > div > div > img {
+  filter: invert(100%);
+  border:none
+}
+
+.rdw-editor-toolbar > div > div > a > div {
+  filter: invert(100%);
+}
