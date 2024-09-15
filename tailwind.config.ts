@@ -14,6 +14,9 @@ module.exports = {
         "martian-mono": ['"Martian Mono"', "monospace"],
         "satoshi": ['Satoshi', 'sans-serif']
       },
+      colors: {
+        'custom-bg': '#191A1F', 
+      },
     },
   },
   plugins: [],
