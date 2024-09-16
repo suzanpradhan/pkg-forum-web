@@ -5,7 +5,7 @@ import {
     Share,
     Dot,
     Globe,
-    Github, // Fixed the import statement
+    Github, 
     ArrowBigUpDash,
     ArrowBigDown,
     MessageSquareText,
