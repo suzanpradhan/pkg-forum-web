@@ -195,6 +195,7 @@ export default function SearchDetail() {
                   className="h-28 w-40 mt-9"
                 />
               </div>
+
               <hr className="border-gray-600 mt-4 -ml-10 -mr-[71px]" />
             </div>
           </div>
