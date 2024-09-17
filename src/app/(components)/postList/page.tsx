@@ -2,6 +2,7 @@
 import Image from "next/image";
 import ReactPlayer from "react-player";
 import ButtonGroup from "../ButtonGroup";
+import Link from "next/link";
 import { Dot, Ellipsis, Github, Globe, Plus, Users } from "lucide-react";
 
 export default function PostList() {
@@ -21,11 +22,16 @@ export default function PostList() {
         <div className="w-5/6 space-y-8 mr-8 border-r border-gray-500 pr-6">
           {/* Post 1 */}
           <div className="mt-6">
+           
+            <Link href={"/detail"}>
             <h2 className="text-white text-lg font-semibold mb-2 font-martian-mono">
               Contrary to popular belief, Lorem Ipsum?
             </h2>
+            </Link>
             <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi">
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words...
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration in some form, by
+              injected humour, or randomised words...
             </p>
             <div className="py-2 text-xs font-medium text-white bg-[#2D2E34] rounded-3xl w-20 flex justify-center font-martian-mono">
               Flutter
@@ -46,9 +52,13 @@ export default function PostList() {
                   height={24}
                   className="rounded-full"
                 />
-                <span className="text-white font-martian-mono">@suzanpradhan</span>
+                <span className="text-white font-martian-mono">
+                  @suzanpradhan
+                </span>
                 <Dot className="text-white" />
-                <span className="text-white font-martian-mono">2 hours ago</span>
+                <span className="text-white font-martian-mono">
+                  2 hours ago
+                </span>
               </div>
             </div>
             <ButtonGroup />
@@ -59,7 +69,8 @@ export default function PostList() {
           <div className="mt-8 flex justify-between">
             <div>
               <h2 className="text-white text-sm font-semibold mb-2 font-martian-mono">
-                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
+                Contrary to popular belief, Lorem Ipsum is not simply random
+                text. It has roots in a piece
               </h2>
               <div className="py-2 text-sm font-medium text-white bg-[#2D2E34] rounded-3xl w-20 flex justify-center font-martian-mono">
                 Flutter
@@ -76,9 +87,13 @@ export default function PostList() {
                     height={24}
                     className="rounded-full"
                   />
-                  <span className="text-white font-martian-mono">@suzanpradhan</span>
+                  <span className="text-white font-martian-mono">
+                    @suzanpradhan
+                  </span>
                   <Dot className="text-white" />
-                  <span className="text-white font-martian-mono">2 hours ago</span>
+                  <span className="text-white font-martian-mono">
+                    2 hours ago
+                  </span>
                 </div>
               </div>
               <ButtonGroup />
@@ -118,7 +133,9 @@ export default function PostList() {
               />
             </div>
             <div className="flex">
-              <span className="text-white font-martian-mono">@suzanpradhan</span>
+              <span className="text-white font-martian-mono">
+                @suzanpradhan
+              </span>
               <Dot className="text-white" />
               <span className="text-white font-martian-mono">2 hours ago</span>
             </div>
@@ -128,10 +145,12 @@ export default function PostList() {
 
         <div className="lg:w-1/4 sticky top-0 mt-4 bg-[#15161A]">
           <div className="flex space-x-6 mb-4">
-            <div className="py-2 text-sm font-medium text-white bg-[#2D2E34] rounded-lg w-44 flex justify-around items-center border border-gray-500">
-              <Plus />
-              <h3 className="font-martian-mono">Create Post</h3>
-            </div>
+            <Link href="/createPost">
+              <div className="py-2 text-sm font-medium text-white bg-[#2D2E34] rounded-lg w-44 flex justify-around items-center border border-gray-500">
+                <Plus />
+                <h3 className="font-martian-mono">Create Post</h3>
+              </div>
+            </Link>
             <button className="text-sm h-10 w-16 bg-[#F65930] rounded-lg">
               Join
             </button>
@@ -146,7 +165,9 @@ export default function PostList() {
                   height={32}
                   className="mr-2"
                 />
-                <span className="bg-white text-black text-xs px-2 py-1 rounded mr-4">pub.dev</span>
+                <span className="bg-white text-black text-xs px-2 py-1 rounded mr-4">
+                  pub.dev
+                </span>
               </div>
               <Image
                 src="/images/flutterIcon.png"
@@ -155,9 +176,13 @@ export default function PostList() {
                 height={100}
                 className="mb-4"
               />
-              <h3 className="text-xl font-bold font-martian-mono">flutter.dev</h3>
+              <h3 className="text-xl font-bold font-martian-mono">
+                flutter.dev
+              </h3>
               <p className="text-sm mb-4">
-                Flutter transforms the entire app development process. Build, compose, and deploy apps across web, mobile, desktop, and embedded devices from a single codebase.
+                Flutter transforms the entire app development process. Build,
+                compose, and deploy apps across web, mobile, desktop, and
+                embedded devices from a single codebase.
               </p>
               <div className="flex space-x-4">
                 <Github className="text-xl" />

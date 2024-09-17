@@ -61,23 +61,25 @@ import Link from "next/link";
 
 import SearchPageAside from "./(components)/SearchPageAside";
 import LanguageType from "./(components)/LanguageType";
-import Card from "./(components)/Card"
+import Card from "./(components)/Card";
 
 export default function Home() {
   const { data: session } = useSession();
-
   return (
     <div className="bg-[#15161A]">
       <div className="py-6">
         <div className="flex w-full gap-6">
-          <div className="flex-1 flex gap-6">
-        <Card/>
-          </div>
+          <Link href="/postList">
+            <div className="flex-1 flex gap-6 border-r border-gray-700 pr-4 -mt-10 h-screen">
+              <Card />
+            </div>
+          </Link>
           <div className="">
-             <SearchPageAside/>
-          <LanguageType />
+            <SearchPageAside />
+            <div className="mt-4">
+              <LanguageType />
+            </div>
           </div>
-         
         </div>
       </div>
     </div>

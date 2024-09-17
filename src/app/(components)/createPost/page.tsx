@@ -5,12 +5,14 @@ import { ChevronRight, X } from "lucide-react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState } from "draft-js";
 
+import Link from "next/link";
+
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
 
-export default function CreatePost() {
+export default function CreatePost() {  
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   return (
@@ -27,7 +29,9 @@ export default function CreatePost() {
           </h3>
         </div>
         <ChevronRight className="ml-4" />
-        <p className="text-white font-martian-mono text-base ml-4">Create Post</p>
+        <p className="text-white font-martian-mono text-base ml-4">
+          Create Post
+        </p>
       </div>
       <div className="mt-8">
         <h3 className="font-martian-mono text-white text-sm">Title</h3>
@@ -48,15 +52,15 @@ export default function CreatePost() {
       </div>
       <div className="mt-8">
         <h3 className="font-martian-mono text-white text-sm">Description</h3>
-       
+
         <div className="bg-[#1E1F23] rounded-lg border border-gray-500 mt-4 h-96 overflow-hidden">
           <Editor
             editorState={editorState}
             onEditorStateChange={setEditorState}
             toolbarClassName="flex sticky top-0 z-50 !bg-[#1E1F23] !text-white"
-            wrapperClassName="wrapper-class h-full" 
-            editorClassName="editor-class h-full overflow-y-auto p-4 text-white rounded-lg" 
-            editorStyle={{ maxHeight: '100%', overflowY: 'auto' }} 
+            wrapperClassName="wrapper-class h-full"
+            editorClassName="editor-class h-full overflow-y-auto p-4 text-white rounded-lg"
+            editorStyle={{ maxHeight: "100%", overflowY: "auto" }}
           />
         </div>
         <div className="flex space-x-6 justify-end">
@@ -65,9 +69,12 @@ export default function CreatePost() {
               Save draft
             </h3>
           </div>
-          <button className="text-xs h-10 w-16 bg-[#F65930] rounded-lg mt-4 font-martian-mono">
-            Post
-          </button>
+
+          <Link href={"/postList"}>
+            <button className="text-xs h-10 w-16 bg-[#F65930] rounded-lg mt-4 font-martian-mono">
+              Post
+            </button>
+          </Link>
         </div>
       </div>
     </div>

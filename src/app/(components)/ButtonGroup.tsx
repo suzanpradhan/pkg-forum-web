@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 export default function BottonGroup() {
   return (
-    <div className=" flex text-start space-x-4 ">
+    <div className=" flex text-start space-x-4 ml-8 ">
       <div className=" text-sm font-medium text-white  rounded-3xl w-44  mt-4 flex bg-[#1E1F23] border border-gray-500 justify-between items-center ">
         <p className="text-white text-xm  font-martian-mono">Upvote</p>
 
