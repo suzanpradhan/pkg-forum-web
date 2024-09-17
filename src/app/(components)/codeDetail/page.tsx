@@ -78,7 +78,7 @@ export default function CodeDetail() {
 
         <div className="mt-4">
           <DetailBox />
-          <div className="-ml-8">
+          <div className="">
             <ButtonGroup />
           </div>
 
@@ -97,7 +97,7 @@ export default function CodeDetail() {
             at Hampden-Sydney College in Virginia, looked up one of the more
             obscure Latin words.
           </p>
-          <div className="-mt-4">
+          <div className="-mt-4 ml-6 ">
             <ButtonGroup />
           </div>
 
@@ -110,7 +110,7 @@ export default function CodeDetail() {
               professor at Hampden-Sydney College in Virginia, looked up one of
               the more obscure Latin words.
             </p>
-            <div className="-mt-4 w-[94%] ">
+            <div className=" -mt-4 ml-6 ">
               <ButtonGroup />
             </div>
           </div>
