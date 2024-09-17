@@ -130,7 +130,6 @@ const PostDetail = () => {
   );
 };
 
-
 const PostPage = () => {
   return (
     <div className=" bg-[#15161A] min-h-screen py-0 px-0 flex">
@@ -141,7 +140,7 @@ const PostPage = () => {
           </div>
         </div>
 
-        <PostPageAside/>
+        <PostPageAside />
       </div>
     </div>
   );

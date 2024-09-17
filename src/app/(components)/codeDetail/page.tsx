@@ -19,6 +19,8 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import PostPage from "../post/page";
 import PostPageAside from "../PostPageAside";
+import DetailBox from "../detailBox";
+import ButtonGroup from "../ButtonGroup";
 
 export default function CodeDetail() {
   const flutterCode = `class MyApp extends StatelessWidget {
@@ -54,182 +56,72 @@ export default function CodeDetail() {
 }`;
 
   return (
-    <div className="flex justify-between">
-    
-      <div> 
-        <h2 className="text-white text-lg font-semibold mb-2 font-martian-mono w-2/3">
-          Contrary to popular belief, Lorem Ipsum?
-        </h2>
-        <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don't look even slightly believable.
-        </p>
+    <div className="flex justify-between flex-1">
+      <div className="w-[94%] pr-5 ">
+        <div className="w-[90%]">
+          <h2 className="text-white text-lg font-semibold mb-2 font-martian-mono ">
+            Contrary to popular belief, Lorem Ipsum?
+          </h2>
+          <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi">
+            There are many variations of passages of Lorem Ipsum available, but
+            the majority have suffered alteration in some form, by injected
+            humour, or randomised words which don't look even slightly
+            believable.
+          </p>
+        </div>
 
-        <div className="mt-8 bg-[#191A1F]  rounded-lg shadow-lg relative">
-          <SyntaxHighlighter  language="dart" style={solarizedlight} >
+        <div className="mt-4 bg-[#191A1F]  rounded-lg shadow-lg w-[94%] ">
+          <SyntaxHighlighter language="dart" style={solarizedlight}>
             {flutterCode}
-          </SyntaxHighlighter >
+          </SyntaxHighlighter>
         </div>
 
         <div className="mt-4">
-          <div className="flex items-center justify-between text-gray-500 text-sm">
-            <div className="flex items-center space-x-2">
-              <img
-                src="/images/avatar.avif  "
-                alt="User Avatar"
-                className="w-6 h-6 rounded-full"
-              />
-              <span className="text-white font-martian-mono">
-                @suzanpradhan
-              </span>
-              <Dot className="text-white" />
-              <span className="text-white font-martian-mono">2 hours ago</span>
-            </div>
+          <DetailBox />
+          <div className="-ml-8">
+            <ButtonGroup />
           </div>
 
-          <div className=" flex text-start space-x-4 ">
-            <div className=" text-sm font-medium text-white  rounded-3xl w-44  mt-4 flex bg-[#1E1F23] border border-gray-500 justify-between items-center ">
-              <ArrowBigUpDash className="text-[#F65930] " />
-              <p className="text-white text-xm  font-martian-mono">Upvote</p>
-
-              <h3 className="border-r-[1px] -ml-2 pr-2 border-gray-500 font-martian-mono">
-                {" "}
-                5k
-              </h3>
-
-              <ArrowBigDown className="ml-3" />
-            </div>
-            <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-3xl w-24  mt-4 flex  justify-center border border-gray-500">
-              <MessageSquareText />
-              <h3 className=" ml-2">2.5k</h3>
-            </div>
-            <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-3xl w-14 mt-4 flex  justify-center border border-gray-500">
-              <BookmarkMinus />
-            </div>
-            <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-3xl w-28 mt-4 flex   border border-gray-500 justify-around items-center">
-              <Forward />
-              {/* <h3 className="ml-2 font-martian-mono">share</h3>    */}
-            </div>
-          </div>
-          <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-xl  w-full mt-4 flex  justify-between border border-gray-500">
+          <div className="py-2   w-[94%] text-sm font-medium text-white bg-[#1E1F23] rounded-xl  mt-4 flex  justify-between border border-gray-500">
             <div className="flex items-center">
-              <img
-                src="/images/avatar.avif"
-                alt="avatar"
-                className="h-9 ml-4"
-              />
               <p className="ml-2 text-gray-500">add your comment</p>
             </div>
             <Navigation className=" mt-2 mr-4" />
           </div>
 
-          <div className="flex items-center justify-between text-gray-500 text-sm">
-            <div className="flex items-center space-x-2 mt-4">
-              <img
-                src="/images/avatar.avif"
-                alt="User Avatar"
-                className="w-6 h-6 rounded-lg"
-              />
-              <span className="text-white font-martian-mono">
-                @suzanpradhan
-              </span>
-              <Dot className="text-white" />
-              <span className="text-white font-martian-mono">2 hours ago</span>
-            </div>
-          </div>
-          <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi mt-4 ml-8">
+          <DetailBox />
+          <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi mt-2 ml-8 w-[94%] ">
             Contrary to popular belief, Lorem Ipsum is not simply random text.
             It has roots in a piece of classical Latin literature from 45 BC,
             making it over 2000 years old. Richard McClintock, a Latin professor
             at Hampden-Sydney College in Virginia, looked up one of the more
             obscure Latin words.
           </p>
-
-          {/* <hr className="border-gray-600  mt-4 -ml-5 -mr-10" /> */}
-
-          <div className=" mt-4 ml-8">
-            <div className=" flex text-start space-x-4 ">
-              <div className=" text-sm font-medium text-white  rounded-3xl w-44  mt-4 flex bg-[#1E1F23] border border-gray-500 justify-between items-center ">
-                <ArrowBigUpDash className="text-[#F65930] " />
-                <p className="text-white text-xm  font-martian-mono">Upvote</p>
-
-                <h3 className="border-r-[1px] -ml-2 pr-2 border-gray-500 font-martian-mono">
-                  {" "}
-                  5k
-                </h3>
-
-                <ArrowBigDown className="ml-3" />
-              </div>
-              <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-3xl w-24  mt-4 flex  justify-center border border-gray-500">
-                <MessageSquareText />
-                <h3 className=" ml-2">2.5k</h3>
-              </div>
-              <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-3xl w-14 mt-4 flex  justify-center border border-gray-500">
-                <BookmarkMinus />
-              </div>
-              <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-3xl w-28 mt-4 flex   border border-gray-500 justify-around items-center">
-                <Forward />
-                <h3 className="ml-2 font-martian-mono">share</h3>
-              </div>
-            </div>
+          <div className="-mt-4">
+            <ButtonGroup />
           </div>
-          {/* one div */}
 
-          <div className="  text-gray-500 text-sm ">
-            <div className="flex items-center space-x-2 mt-4">
-              <img
-                src="/images/avatar.avif"
-                alt="User Avatar"
-                className="w-6 h-6 rounded-md"
-              />
-              <span className="text-white font-martian-mono">
-                @suzanpradhan
-              </span>
-              <Dot className="text-white" />
-              <span className="text-white font-martian-mono">2 hours ago</span>
-            </div>
-
-            <div className=" mt-4 ml-8">
-              <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi mt-4 ">
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece of classical Latin literature from
-                45 BC, making it over 2000 years old. Richard McClintock, a
-                Latin professor at Hampden-Sydney College in Virginia, looked up
-                one of the more obscure Latin words.
-              </p>
-              <div className=" flex text-start space-x-4 ">
-                <div className=" text-sm font-medium text-white  rounded-3xl w-44  mt-4 flex bg-[#1E1F23] border border-gray-500 justify-between items-center ">
-                  <ArrowBigUpDash className="text-[#F65930] " />
-                  <p className="text-white text-xm  font-martian-mono">
-                    Upvote
-                  </p>
-
-                  <h3 className="border-r-[1px] -ml-2 pr-2 border-gray-500 font-martian-mono">
-                    {" "}
-                    5k
-                  </h3>
-
-                  <ArrowBigDown className="ml-3" />
-                </div>
-                <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-3xl w-24  mt-4 flex  justify-center border border-gray-500">
-                  <MessageSquareText />
-                  <h3 className=" ml-2">2.5k</h3>
-                </div>
-                <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-3xl w-14 mt-4 flex  justify-center border border-gray-500">
-                  <BookmarkMinus />
-                </div>
-                <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-3xl w-28 mt-4 flex   border border-gray-500 justify-around items-center">
-                  <Forward />
-                  <h3 className="ml-2 font-martian-mono">share</h3>
-                </div>
-              </div>
+          <div className="mt-8">
+            <DetailBox />
+            <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi mt-2 ml-8 w-[94%]  ">
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a piece of classical Latin literature from 45 BC,
+              making it over 2000 years old. Richard McClintock, a Latin
+              professor at Hampden-Sydney College in Virginia, looked up one of
+              the more obscure Latin words.
+            </p>
+            <div className="-mt-4 w-[94%] ">
+              <ButtonGroup />
             </div>
           </div>
         </div>
       </div>
-        
+      
+      <div className="-mr-4">
+      
+        <PostPageAside />
+      </div>
+     
     </div>
   );
 }
-
