@@ -4,7 +4,7 @@ export default function Profile() {
   return (
     <div>
       <h1 className="text-white text-xl font-martian-mono">My Profile</h1>
-      <div className="relative h-20 w-20 rounded-full overflow-hidden mt-4">
+      <div className="relative h-28 w-28 rounded-2xl overflow-hidden mt-4">
         <Image
           src={"/images/avatar.avif"}
           alt="avatar"

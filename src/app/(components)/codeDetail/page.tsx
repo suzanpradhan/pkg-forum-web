@@ -57,71 +57,74 @@ export default function CodeDetail() {
 
   return (
     <div className="flex justify-between flex-1">
-      <div className="w-[94%] pr-5 ">
-        <div className="w-[90%]">
-          <h2 className="text-white text-lg font-semibold mb-2 font-martian-mono ">
-            Contrary to popular belief, Lorem Ipsum?
-          </h2>
-          <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi">
-            There are many variations of passages of Lorem Ipsum available, but
-            the majority have suffered alteration in some form, by injected
-            humour, or randomised words which don't look even slightly
-            believable.
-          </p>
-        </div>
-
-        <div className="mt-4 bg-[#191A1F]  rounded-lg shadow-lg w-[94%] ">
-          <SyntaxHighlighter language="dart" style={solarizedlight}>
-            {flutterCode}
-          </SyntaxHighlighter>
-        </div>
-
+      <div className="w-[94%]   ">
         <div className="mt-4">
+          <div className="w-[90%]">
+            <h2 className="text-white text-lg font-semibold mb-2 font-martian-mono ">
+              Contrary to popular belief, Lorem Ipsum?
+            </h2>
+            <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi">
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration in some form, by
+              injected humour, or randomised words which don't look even
+              slightly believable.
+            </p>
+          </div>
+
+          <div className="mt-4 bg-[#191A1F]   rounded-lg shadow-lg w-[94%] ">
+            <SyntaxHighlighter
+              language="dart"
+              style={solarizedlight}
+              customStyle={{ backgroundColor: "#191A1F" }}
+            >
+              {flutterCode}
+            </SyntaxHighlighter>
+          </div>
           <DetailBox />
           <div className="">
             <ButtonGroup />
           </div>
 
-          <div className="py-2   w-[94%] text-sm font-medium text-white bg-[#1E1F23] rounded-xl  mt-4 flex  justify-between border border-gray-500">
-            <div className="flex items-center">
-              <p className="ml-2 text-gray-500">add your comment</p>
+          <div className="w-[94%]">
+            <div className="py-2   w-[94%] text-sm font-medium text-white bg-[#1E1F23] rounded-xl  mt-4 flex  justify-between border border-gray-500">
+              <div className="flex items-center">
+                <p className="ml-2 text-gray-500">add your comment</p>
+              </div>
+              <Share className="  mr-4" />
             </div>
-            <Navigation className=" mt-2 mr-4" />
-          </div>
 
-          <DetailBox />
-          <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi mt-2 ml-8 w-[94%] ">
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock, a Latin professor
-            at Hampden-Sydney College in Virginia, looked up one of the more
-            obscure Latin words.
-          </p>
-          <div className="-mt-4 ml-6 ">
-            <ButtonGroup />
-          </div>
-
-          <div className="mt-8">
             <DetailBox />
-            <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi mt-2 ml-8 w-[94%]  ">
+            <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi mt-2 ml-8 w-[94%] ">
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
               making it over 2000 years old. Richard McClintock, a Latin
               professor at Hampden-Sydney College in Virginia, looked up one of
               the more obscure Latin words.
             </p>
-            <div className=" -mt-4 ml-6 ">
+            <div className="-mt-4 ml-6 ">
               <ButtonGroup />
+            </div>
+
+            <div className="mt-8">
+              <DetailBox />
+              <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi mt-2 ml-8 w-[94%]  ">
+                Contrary to popular belief, Lorem Ipsum is not simply random
+                text. It has roots in a piece of classical Latin literature from
+                45 BC, making it over 2000 years old. Richard McClintock, a
+                Latin professor at Hampden-Sydney College in Virginia, looked up
+                one of the more obscure Latin words.
+              </p>
+              <div className=" -mt-4 ml-6 ">
+                <ButtonGroup />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
+      <div className="border-r border-gray-500 w-0 mr-[50px] -mt-4"></div>
       <div className="-mr-4">
-      
         <PostPageAside />
       </div>
-     
     </div>
   );
 }
