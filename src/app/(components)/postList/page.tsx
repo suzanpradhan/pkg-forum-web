@@ -4,6 +4,8 @@ import ReactPlayer from "react-player";
 import ButtonGroup from "../ButtonGroup";
 import Link from "next/link";
 import { Dot, Ellipsis, Github, Globe, Plus, Users } from "lucide-react";
+import DetailBox from "../detailBox";
+import PostPageAside from "../PostPageAside";
 
 export default function PostList() {
   return (
@@ -21,93 +23,72 @@ export default function PostList() {
       <div className="flex container mx-auto">
         <div className="w-5/6 space-y-8 mr-8 border-r border-gray-500 pr-6">
           {/* Post 1 */}
-          <div className="mt-6">
-           
-            <Link href={"/detail"}>
-            <h2 className="text-white text-lg font-semibold mb-2 font-martian-mono">
-              Contrary to popular belief, Lorem Ipsum?
-            </h2>
-            </Link>
-            <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi">
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by
-              injected humour, or randomised words...
-            </p>
-            <div className="py-2 text-xs font-medium text-white bg-[#2D2E34] rounded-3xl w-20 flex justify-center font-martian-mono">
-              Flutter
-            </div>
-            <Image
-              src="/images/post1.png"
-              alt="Post Image"
-              width={600}
-              height={300}
-              className="w-full h-48 rounded-md object-cover mb-4 mt-4"
-            />
-            <div className="flex items-center justify-between text-gray-500 text-sm">
-              <div className="flex items-center space-x-2">
-                <Image
-                  src="/images/pub.png"
-                  alt="User Avatar"
-                  width={24}
-                  height={24}
-                  className="rounded-full"
-                />
-                <span className="text-white font-martian-mono">
-                  @suzanpradhan
-                </span>
-                <Dot className="text-white" />
-                <span className="text-white font-martian-mono">
-                  2 hours ago
-                </span>
+          <div className="flex">
+            <div className="mt-6">
+              <Link href={"/detail"}>
+                <h2 className="text-white text-lg font-semibold mb-2 font-martian-mono">
+                  Contrary to popular belief, Lorem Ipsum?
+                </h2>
+              </Link>
+              <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi">
+                There are many variations of passages of Lorem Ipsum available,
+                but the majority have suffered alteration in some form, by
+                injected humour, or randomised words...
+              </p>
+              <div className="py-2 text-xs font-medium text-white bg-[#2D2E34] rounded-3xl w-20 flex justify-center font-martian-mono">
+                Flutter
               </div>
+              <Image
+                src="/images/post1.png"
+                alt="Post Image"
+                width={600}
+                height={300}
+                className="w-full h-48 rounded-md object-cover mb-4 mt-4"
+              />
+              <div className="flex items-center justify-between text-gray-500 text-sm">
+                <DetailBox />
+              </div>
+              <ButtonGroup />
+              <hr className="border-gray-600 mt-4 -ml-10 -mr-12" />
             </div>
-            <ButtonGroup />
-            <hr className="border-gray-600 mt-4" />
+            <div className="mt-6">
+              <Ellipsis />
+            </div>
           </div>
 
           {/* Post 2 */}
-          <div className="mt-8 flex justify-between">
-            <div>
-              <h2 className="text-white text-sm font-semibold mb-2 font-martian-mono">
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece
-              </h2>
-              <div className="py-2 text-sm font-medium text-white bg-[#2D2E34] rounded-3xl w-20 flex justify-center font-martian-mono">
-                Flutter
-              </div>
-              <h3 className="font-satoshi mt-3">
-                https://www.pinterest.com/pin/840907180378
-              </h3>
-              <div className="flex items-center justify-between mt-4 text-gray-500 text-sm">
-                <div className="flex items-center space-x-2">
-                  <Image
-                    src="/images/pub.png"
-                    alt="User Avatar"
-                    width={24}
-                    height={24}
-                    className="rounded-full"
-                  />
-                  <span className="text-white font-martian-mono">
-                    @suzanpradhan
-                  </span>
-                  <Dot className="text-white" />
-                  <span className="text-white font-martian-mono">
-                    2 hours ago
-                  </span>
+          <div className="flex">
+            <div className=" flex justify-between">
+              <div>
+                <h2 className="text-white text-sm font-semibold mb-2 font-martian-mono">
+                  Contrary to popular belief, Lorem Ipsum is not simply random
+                  text. It has roots in a piece
+                </h2>
+                <div className="py-2 text-sm font-medium text-white bg-[#2D2E34] rounded-3xl w-20 flex justify-center font-martian-mono">
+                  Flutter
                 </div>
+                <h3 className="font-satoshi mt-3">
+                  https://www.pinterest.com/pin/840907180378
+                </h3>
+                <div className="flex items-center justify-between mt-4 text-gray-500 text-sm">
+                  <DetailBox />
+                </div>
+                <ButtonGroup />
               </div>
-              <ButtonGroup />
+              <Image
+                src="/images/python.png"
+                alt="Python"
+                width={160}
+                height={112}
+                className="mt-9"
+              />
             </div>
-            <Image
-              src="/images/python.png"
-              alt="Python"
-              width={160}
-              height={112}
-              className="mt-9"
-            />
+            <div className="">
+              <Ellipsis />
+            </div>
           </div>
 
-          <hr className="border-gray-600 mt-4" />
+          <hr className="border-gray-600 mt-4 -ml-10 -mr-6" />
 
           {/* Post 3 */}
           <div>
@@ -132,15 +113,11 @@ export default function PostList() {
                 className="absolute top-0 left-0"
               />
             </div>
-            <div className="flex">
-              <span className="text-white font-martian-mono">
-                @suzanpradhan
-              </span>
-              <Dot className="text-white" />
-              <span className="text-white font-martian-mono">2 hours ago</span>
-            </div>
+
+            <DetailBox />
             <ButtonGroup />
           </div>
+          <hr className="border-gray-600 mt-4 -ml-10 -mr-6" />
         </div>
 
         <div className="lg:w-1/4 sticky top-0 mt-4 bg-[#15161A]">
@@ -155,42 +132,7 @@ export default function PostList() {
               Join
             </button>
           </div>
-          <div className="shadow-lg p-4 w-[310px] bg-[#15161A] border border-gray-500">
-            <div className="text-white">
-              <div className="flex items-center mb-4">
-                <Image
-                  src="/images/pub.png"
-                  alt="Publisher"
-                  width={32}
-                  height={32}
-                  className="mr-2"
-                />
-                <span className="bg-white text-black text-xs px-2 py-1 rounded mr-4">
-                  pub.dev
-                </span>
-              </div>
-              <Image
-                src="/images/flutterIcon.png"
-                alt="Flutter"
-                width={100}
-                height={100}
-                className="mb-4"
-              />
-              <h3 className="text-xl font-bold font-martian-mono">
-                flutter.dev
-              </h3>
-              <p className="text-sm mb-4">
-                Flutter transforms the entire app development process. Build,
-                compose, and deploy apps across web, mobile, desktop, and
-                embedded devices from a single codebase.
-              </p>
-              <div className="flex space-x-4">
-                <Github className="text-xl" />
-                <Globe className="text-xl" />
-                <Users className="text-xl" />
-              </div>
-            </div>
-          </div>
+          <PostPageAside />
         </div>
       </div>
     </div>

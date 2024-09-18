@@ -3,6 +3,7 @@ import Profile from "../Profile";
 import Function from "../Function";
 import { Dot } from "lucide-react";
 import BottonGroup from "../ButtonGroup";
+import DetailBox from "../detailBox";
 
 export default function ProfileOverview() {
   return (
@@ -29,15 +30,8 @@ export default function ProfileOverview() {
             Flutter
           </div>
 
-          <div className="flex items-center space-x-2 mt-4">
-            <img
-              src="/images/pub.png"
-              alt="User Avatar"
-              className="w-6 h-6 rounded-full"
-            />
-            <span className="text-white">@suzanpradhan</span>
-            <Dot className="text-white" />
-            <span className="text-white">2 hours ago</span>
+          <div className="flex items-center space-x-2 ">
+            <DetailBox />
           </div>
 
           <BottonGroup />

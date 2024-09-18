@@ -15,7 +15,7 @@ export default function ProfileComment() {
 
       <div className="flex-1 h-screen">
         <Function />
-       
+
         <div className="mt-8">
           <Comment />
         </div>

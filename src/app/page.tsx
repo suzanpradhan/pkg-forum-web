@@ -53,7 +53,7 @@
 //   );
 // }
 
-// app/page.tsx
+
 "use client";
 
 import { useSession, signOut } from "next-auth/react";
@@ -70,7 +70,7 @@ export default function Home() {
       <div className="py-6">
         <div className="flex w-full gap-6">
           <Link href="/postList">
-            <div className="flex-1 flex gap-6 border-r border-gray-700 pr-4 -mt-10 h-screen">
+            <div className="flex-1 flex gap-6 border-r border-gray-700 pr-4 -mt-10 -mb-20 min-h-screen">
               <Card />
             </div>
           </Link>

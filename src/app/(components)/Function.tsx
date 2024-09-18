@@ -24,7 +24,6 @@ export default function SearchDetail() {
             </p>
           ))}
         </div>
-
         <hr className="border-gray-500 -ml-8  -mr-24" />
       </div>
     </div>

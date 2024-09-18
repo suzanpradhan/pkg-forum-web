@@ -11,13 +11,13 @@ import {
   MessageSquareText,
 } from "lucide-react";
 import BottonGroup from "../ButtonGroup";
+import DetailBox from "../detailBox";
 
 export default function ProfilePost() {
   return (
     <div className="flex gap-8 p-4">
       <div className="w-1/4 -ml-5 border-r border-gray-500 pr-6 -mt-8 ">
         <div className="mt-8">
-          .
           <Profile />
         </div>
       </div>
@@ -38,17 +38,7 @@ export default function ProfilePost() {
             Flutter
           </div>
 
-          <div className="flex items-center space-x-2 mt-4">
-            <img
-              src="/images/pub.png"
-              alt="User Avatar"
-              className="w-6 h-6 rounded-full"
-            />
-            <span className="text-white">@suzanpradhan</span>
-            <Dot className="text-white" />
-            <span className="text-white">2 hours ago</span>
-          </div>
-
+          <DetailBox />
           <BottonGroup />
           <hr className="border-gray-500 -ml-8 -mr-24 mt-8" />
         </div>
@@ -69,23 +59,11 @@ export default function ProfilePost() {
 
               <div className="flex items-center justify-between text-gray-500 text-sm">
                 <div className="flex items-center space-x-2">
-                  <img
-                    src="/images/pub.png"
-                    alt="User Avatar"
-                    className="w-6 h-6 rounded-full"
-                  />
-                  <span className="text-white font-martian-mono">
-                    @suzanpradhan
-                  </span>
-                  <Dot className="text-white" />
-                  <span className="text-white font-martian-mono">
-                    2 hours ago
-                  </span>
+                  <DetailBox />
                 </div>
               </div>
               <BottonGroup />
             </div>
-
             <img
               src="images/python.png "
               alt="python"
