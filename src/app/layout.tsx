@@ -24,19 +24,18 @@
 //       </head>
 //       <body>
 //         <SessionWrapper>
-          
+
 //           {children}</SessionWrapper>
 //       </body>
 //     </html>
 //   );
 // }
 
-
 import "./globals.css";
 import { Inter } from "next/font/google";
 import SessionWrapper from "./SessionWrapper";
-import NavBar from "@/app/(components)/navbar";
-import Sidebar from "@/app/(components)/sidebar";
+import NavBar from "@/app/(mainComponents)/navbar";
+import Sidebar from "@/app/(mainComponents)/sidebar";
 
 export const metadata = {
   title: "PKG-FORUM",
