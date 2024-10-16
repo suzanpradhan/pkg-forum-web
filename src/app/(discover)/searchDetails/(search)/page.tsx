@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Card from "../../(components)/Card"
+import Card from "../../../(commonComponents)/Card"
 
 export default function page() {
   return (

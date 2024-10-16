@@ -12,25 +12,25 @@ export default function LanguageType() {
       name: "JavaScript",
       members: "98k",
       online: 300,
-      avatar: "/images/avatar.avif",
+      avatar: "/images/flutterIcon.png ",
     },
     {
       name: "ReactJS",
       members: "85k",
       online: 250,
-      avatar: "/images/avatar.avif",
+      avatar: "/images/flutterIcon.png ",
     },
     {
       name: "NodeJS",
       members: "70k",
       online: 200,
-      avatar: "/images/avatar.avif",
+      avatar: "/images/flutterIcon.png ",
     },
     {
       name: "TypeScript",
       members: "60k",
       online: 180,
-      avatar: "/images/avatar.avif",
+      avatar: "/images/flutterIcon.png ",
     },
   ];
 
@@ -42,12 +42,12 @@ export default function LanguageType() {
 
       {groups.map((group, index) => (
         <div key={index} className="flex">
-          <div className="mt-3">
+          <div className="mt-3 h-10 basis-10 relative rounded-full overflow-hidden">
             <Image
               src={group.avatar}
-              className="h-8 w-12 rounded-full"
-              height={48}
-              width={32}
+              sizes=""
+              fill
+              objectFit="cover"
               alt={group.name}
             />
           </div>

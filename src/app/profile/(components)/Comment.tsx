@@ -1,17 +1,5 @@
 import {
-  Users,
-  ThumbsUp,
-  Share,
   Dot,
-  Globe,
-  Github,
-  ArrowBigDown,
-  MessageSquareText,
-  BookmarkMinus,
-  Forward,
-  Plus,
-  Ellipsis,
-  Navigation,
 } from "lucide-react";
 import BottonGroup from "../../(commonComponents)/ButtonGroup";
 export default function Comment() {
@@ -45,7 +33,7 @@ export default function Comment() {
         </div>
         <BottonGroup />
       </div>
-      <hr className="border-gray-500 -ml-[35px] -mr-[132px] mt-8" />
+    
     </div>
   );
 }

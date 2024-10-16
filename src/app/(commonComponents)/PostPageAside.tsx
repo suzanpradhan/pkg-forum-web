@@ -1,64 +1,103 @@
-import React from 'react'
+"use client";
+import React, { useEffect, useState } from "react";
+import { Users, Globe, Github } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "@/core/redux/clientStore";
 import {
-    Users,
-    ThumbsUp,
-    Share,
-    Dot,
-    Globe,
-    Github, 
-    ArrowBigUpDash,
-    ArrowBigDown,
-    MessageSquareText,
-    BookmarkMinus,
-    Forward,
-    Plus,
-    Ellipsis,
-    Navigation,
-  } from "lucide-react";
-  import Image from 'next/image';
+  PackageType,
+  PackageTypeValidation,
+} from "@/modules/packages/packagesType";
+import packagesApi from "@/modules/packages/packagesApi";
+import { RootState } from "@/core/redux/store";
+import Link from "next/link";
 
-export default function PostPageAside() {
+const PostPageAside = ({ packageId }: { packageId: string }) => {
+  const dispatch = useAppDispatch();
+
+  const packageData = useAppSelector(
+    (state: RootState) =>
+      state.baseApi.queries[`getPackageById-${packageId}`]
+        ?.data as PackageTypeValidation
+  );
+
+  console.log("packageId", packageId);
+
+  useEffect(() => {
+    packageId &&
+      dispatch(packagesApi.endpoints.getPackageById.initiate(packageId));
+  }, [dispatch, packageId]);
+               
+  console.log("packageData", packageData);
+
   return (
-    <div className="lg:w-1/4 sticky top-0 bg-[#15161A]   ">
-    <div className=" shadow-lg  p-4 w-[310px] -mt-2 -ml-5 border border-gray-500 font-martian-mono ">
-      <div className="text-white">
-        <div className="flex mt-4 ml-40">
-          <img
-            src="/images/pub.png"
-            alt="Flutter"
-            className="px-[2px] text-xl"
-          />
-          <span className="bg-white text-black text-xs px-2 py-1 rounded mr-4">
-            pub.dev
-          </span>
-        </div>
-        
-        <img
-          src="/images/flutterIcon.png"
-          alt="flutter"
-          className=" -mt-4"
-        />
-        <h3 className="text-xl font-bold font-martian-mono mt-4">
-          Flutter
-        </h3>
-        <p className="text-gray-400 text-xs mt-2 font-satoshi">
-          There are many variations of passages of Lorem Ipsum available,
-          but the majority have suffered.
-        </p>
-        <div className="flex justify-start items-center space-x-3 mt-4">
-          <Github className="h-5 w-5 text-white cursor-pointer" />
-          <Globe className="h-5 w-5 text-white cursor-pointer" />
-        </div>
-        <div className="flex justify-between items-center mt-6">
-          <div className="flex items-center text-gray-400 space-x-1">
-            <Users className="h-4 w-4 text-red-500" />
-            <span className="text-xs font-martian-mono ">
-              882 Members
-            </span>
-          </div>
+    <div className="lg:w-1/4 sticky top-0 bg-[#15161A]">
+      <div className="shadow-lg p-4 w-[310px] -mt-2 -ml-5 border border-gray-500 font-martian-mono">
+        <div className="text-white">
+          {packageData ? (
+            <>
+              <div className="flex mt-4 ml-40">
+                <img
+                  src="/images/pub.png"
+                  alt="Flutter"
+                  className="px-[2px] text-xl"
+                />
+                <span className="bg-white text-black text-xs px-2 py-1 rounded mr-4">
+                  pub.dev
+                </span>
+              </div>
+
+              <img
+                src="/images/flutterIcon.png"
+                alt="flutter"
+                className="-mt-4"
+              />
+              <h3 className="text-xl font-bold font-martian-mono mt-4">
+                {packageData.title}
+              </h3>
+
+              <p className="mt-4 text-sm text-gray-500">
+                {packageData.version}
+              </p>
+              <p className="text-gray-400 text-xs mt-2 font-satoshi">
+                {packageData.description}
+              </p>
+              <div className="flex justify-start items-center space-x-3 mt-4">
+                {packageData.socials?.map((social, index) => {
+                  return (
+                    <Link
+                      key={index}
+                      href={social.link as string}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {/* {social.social === "github" ? (
+                        <Github className="h-5 w-5 text-white cursor-pointer" />
+                      ) : null} */}
+                      {social.social === "github" && (
+                        <Github className="h-5 w-5 text-white cursor-pointer" />
+                      )}
+                      {social.social === "website" && (
+                        <Globe className="h-5 w-5 text-white cursor-pointer" />
+                      )}
+                    </Link>
+                  );
+                })}
+              </div>
+              <div className="flex justify-between items-center mt-6">
+                <div className="flex items-center text-gray-400 space-x-1">
+                  {/* <Users className="h-4 w-4 text-red-500" /> */}
+                  <span className="text-xs font-martian-mono">
+                    {/* {packageData.members} Members */}
+                  </span>
+                </div>
+              </div>
+            </>
+          ) : (
+            <p>Loading package details...</p>
+          )}
         </div>
       </div>
     </div>
-  </div>
-  )
-}
+  );
+};
+
+export default PostPageAside;

@@ -1,5 +1,4 @@
 import { Dot } from "lucide-react";
-import BottonGroup from "./ButtonGroup";
 
 export default function DetailBox() {
   return (

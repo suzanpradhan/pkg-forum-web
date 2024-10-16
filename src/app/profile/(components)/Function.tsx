@@ -13,7 +13,7 @@ export default function Function() {
   ];
 
   return (
-    <div className="flex flex-1 gap-12">
+    <div className="flex flex-1 -mt-6">
       <div className=" w-11/12">
         <div className="flex ">
           {tabs.map((tab, index) => (

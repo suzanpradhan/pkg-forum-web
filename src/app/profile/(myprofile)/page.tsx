@@ -7,27 +7,30 @@ import DetailBox from "@/app/(commonComponents)/detailBox";
 export default function page() {
   return (
     <div className="">
-      <div className="-ml-10">
-        <h2 className="text-white text-lg font-semibold mb-2">
+      <div className="-ml-12">
+        <h2 className="text-white text-lg font-martian-mono mb-2 ">
           Contrary to popular belief, Lorem Ipsum?
         </h2>
-        <p className="mt-2 text-base text-[#D2D2D2] font-satoshi">
+        <p className=" text-base text-[#D2D2D2] font-satoshi -mt-1">
           There are many variations of passages of Lorem Ipsum available, but
           the majority have suffered alteration in some form, by injected
           humour, or randomised words...
         </p>
-        <div className="py-2 px-4 text-[10px] font-martian-mono text-white bg-[#2D2E34] rounded-full w-24 text-center mt-4">
+        <div className="py-2 px-4 text-[10px] font-martian-mono text-white bg-[#2D2E34] rounded-full w-24 text-center mt-2">
           Flutter
         </div>
-        <div className="flex items-center space-x-2 ">
+        <div className="flex items-center space-x-2 -mt-1 ">
           <DetailBox />
         </div>
+        <div className="-mt-1">
         <BottonGroup />
-        <hr className="border-gray-500 -ml-[35px] -mr-[74px] mt-8" />
+        </div>
+        <hr className="border-gray-500 -ml-[25px] -mr-[74px] mt-6" />
       </div>
 
-      <div className=" mt-4 -ml-10">
+      <div className=" mt-4 -ml-12">
         <Comment />
+        <hr className="border-gray-500 -ml-[25px] -mr-[74px] mt-6" />
       </div>
     </div>
   );

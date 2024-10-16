@@ -1,25 +1,9 @@
-import React from "react";
-import {
-  Users,
-  ThumbsUp,
-  Share,
-  Dot,
-  Globe,
-  Github,
-  ArrowBigUpDash,
-  ArrowBigDown,
-  MessageSquareText,
-  BookmarkMinus,
-  Forward,
-  Plus,
-  Ellipsis,
-  Navigation,
-} from "lucide-react";
+"use client";
+import ButtonGroup from "@/app/(commonComponents)/ButtonGroup";
+import { Share } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
-import ButtonGroup from "@/app/(commonComponents)/ButtonGroup";
 
-import PostPageAside from "@/app/(commonComponents)/PostPageAside";
 import DetailBox from "@/app/(commonComponents)/detailBox";
 
 export default function CodeDetail() {
@@ -69,7 +53,7 @@ export default function CodeDetail() {
               injected humour, or randomised words which don't look even
               slightly believable.
             </p>
-          </div>  
+          </div>
 
           <div className="mt-4 bg-[#191A1F]   rounded-lg shadow-lg w-[94%] ">
             <SyntaxHighlighter

@@ -31,7 +31,7 @@ export default function SearchPageAside() {
 
   return (
     <>
-      <div className="border border-[#2D323B]  rounded-lg p-4  w-80  ">
+      <div className="border border-[#2D323B]  rounded-lg p-4  w-80   ">
         <div>
           <h3 className="text-white text-base font-martian-mono">People</h3>
         </div>
@@ -39,13 +39,13 @@ export default function SearchPageAside() {
         <div className="">
           {profiles.map((profile, index) => (
             <div key={index} className="flex  ">
-              <div className="mt-2">
+              <div className="mt-2 h-10 basis-10 relative rounded-full overflow-hidden">
                 <Image
                   src={profile.avatar}
                   alt={profile.name}
-                  width={30}
-                  height={15}
-                  className="rounded-full"
+                  sizes=""
+                  fill
+                  objectFit="cover"
                 />
               </div>
               <div className="mt-2 ml-4">
