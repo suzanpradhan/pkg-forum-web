@@ -36,7 +36,7 @@ const Card = () => {
   if (error) {
     return <div>Error fetching packages: {error.message}</div>;
   }
-
+  console.log("results", packagesData?.results);
   return (
     <BackgroundBeamsWithCollision>
       <div className=" grid grid-cols-3 gap-6 mt-4 relative w-full">
@@ -46,7 +46,7 @@ const Card = () => {
           packagesData?.results.map((card, index) => (
             <Link
               href={`/${card.id}`}
-              key={index}
+              key={card.id}
               className="bg-gray-800 rounded-lg shadow-lg  flex-1"
             >
               <div className="flex items-center justify-between">
@@ -137,6 +137,7 @@ const Card = () => {
               </div>
 
               <BackgroundBeams />
+              {card.id}
             </Link>
           ))
         )}

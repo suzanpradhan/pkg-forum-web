@@ -1,14 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Users, Globe, Github } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/core/redux/clientStore";
-import {
-  PackageType,
-  PackageTypeValidation,
-} from "@/modules/packages/packagesType";
-import packagesApi from "@/modules/packages/packagesApi";
 import { RootState } from "@/core/redux/store";
+import packagesApi from "@/modules/packages/packagesApi";
+import { PackageTypeValidation } from "@/modules/packages/packagesType";
+import { Github, Globe } from "lucide-react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const PostPageAside = ({ packageId }: { packageId: string }) => {
   const dispatch = useAppDispatch();
@@ -25,7 +22,7 @@ const PostPageAside = ({ packageId }: { packageId: string }) => {
     packageId &&
       dispatch(packagesApi.endpoints.getPackageById.initiate(packageId));
   }, [dispatch, packageId]);
-               
+
   console.log("packageData", packageData);
 
   return (

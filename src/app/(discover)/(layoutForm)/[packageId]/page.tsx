@@ -44,123 +44,114 @@ export default function PostList({
 
   return (
     <div>
+      <div className="relative h-36  overflow-hidden -ml-10 -mt-10">
+        <Image
+          src="/images/postimg.png"
+          alt="Post Image"
+          className="object-cover"
+          layout="fill"
+          sizes="100vw"
+        />
+      </div>
+
       {postsData?.results.length === 0 ? (
-        <div> No posts available</div>
+        <div>No posts available</div>
       ) : (
         postsData?.results.map((post, index) => (
-          <Link href={`posts/${post.id}`}>
-            <div className="relative h-36 w-[103%] overflow-hidden -ml-10 -mt-10">
-              <Image
-                src="/images/postimg.png"
-                alt="Post Image"
-                className="object-cover"
-                layout="fill"
-                sizes="100vw"
-              />
-            </div>
-
+          <Link key={index} href={`posts/${post.id}`}>
             <div className="flex-1 flex">
-              <div className="-ml-4 w-5/6 space-y-4 mr-10 border-r border-gray-700">
-                <div className=" container mx-auto">
-                  {postsData?.results.length === 0 ? (
-                    <div>No Posts available</div>
-                  ) : (
-                    postsData?.results.map((post, index) => (
-                      <div key={index}>
-                        <div className="flex">
-                          <div className="mt-6">
-                            <h2 className="text-white text-lg font-martian-mono mb-2">
-                              {post.title}
-                            </h2>
-                            <p className="text-[#D2D2D2] text-base mb-4 font-satoshi">
-                              {parse(post.content)}
-                            </p>
-                            <div className="py-2 text-[10px] font-martian-mono text-white bg-[#2D2E34] rounded-3xl w-20 flex justify-center">
-                              Flutter
-                            </div>
-                            <div>
-                              <Image
-                                src="/images/post1.png"
-                                alt="Post Image"
-                                width={600}
-                                height={300}
-                                className="w-[130%] h-56 rounded-md object-cover mb-4 mt-4"
-                              />
-                            </div>
-                            <div className="flex items-center justify-between text-gray-500 text-sm -mt-4">
-                              <DetailBox />
-                            </div>
-                            <ButtonGroup />
-                            <hr className="border-gray-700 mt-4 -ml-6 -mr-12" />
-                          </div>
-                          <div className="mt-6">
-                            <Ellipsis />
-                          </div>
-                        </div>
-
-                        {/* Post 2 */}
-                        <div className="flex mt-4">
-                          <div className="flex justify-between">
-                            <div>
-                              <h2 className="text-white text-sm font-semibold mb-2 font-martian-mono">
-                                Contrary to popular belief, Lorem Ipsum is not
-                                simply random text. It has roots in a piece
-                              </h2>
-                              <div className="py-2 text-[10px] text-white bg-[#2D2E34] rounded-3xl w-20 flex justify-center font-martian-mono">
-                                Flutter
-                              </div>
-                              <h3 className="font-satoshi mt-3">
-                                https://www.pinterest.com/pin/840907180378
-                              </h3>
-                              <div className="flex items-center justify-between mt-4 text-gray-500 text-sm">
-                                <DetailBox />
-                              </div>
-                              <ButtonGroup />
-                            </div>
-                            <Image
-                              src="/images/python.png"
-                              alt="Python"
-                              width={160}
-                              height={112}
-                              className="mt-9"
-                            />
-                          </div>
-                          <div>
-                            <Ellipsis />
-                          </div>
-                        </div>
-
-                        <hr className="border-gray-700 mt-4 -ml-6 -mr-6" />
-
-                        {/* Post 3 */}
-                        <div className="mt-4">
-                          <h2 className="text-white text-sm font-semibold mb-2 font-martian-mono">
-                            Contrary to popular belief, Lorem Ipsum?
-                          </h2>
-                          <div className="w-full h-72 rounded-md overflow-hidden mb-4 mt-4 relative">
-                            <ReactPlayer
-                              url="https://www.youtube.com/watch?v=LizEf79gBcM"
-                              width="100%"
-                              height="100%"
-                              controls
-                              config={{
-                                youtube: {
-                                  playerVars: {
-                                    showinfo: 1,
-                                    rel: 0,
-                                    modestbranding: 1,
-                                  },
-                                },
-                              }}
-                              className="absolute top-0 left-0"
-                            />
-                          </div>
-                          <DetailBox />
-                          <ButtonGroup />
-                        </div>
+              <div className=" w-full space-y-4 mr-10 border-r border-gray-700">
+                <div className="container mx-auto -ml-12">
+                  <div className=" mt-6">
+                    <div className="flex">
+                      <h2 className="text-white text-lg font-martian-mono mb-2">
+                        {post.title}
+                      </h2>
+                      <div className=" flex ml-[800px]">
+                        <Ellipsis />
                       </div>
-                    ))
-                  )}
+                    </div>
+                    <p className="text-[#D2D2D2] text-base mb-4 font-satoshi">
+                      {parse(post.content)}
+                    </p>
+                    <div className="py-2 text-[10px] font-martian-mono text-white bg-[#2D2E34] rounded-3xl w-20 flex justify-center">
+                      Flutter
+                    </div>
+                    <div className="flex justify-center w-full">
+                      <img
+                        src="/images/post1.png"
+                        alt="Post Image"
+                        className="w-full h-auto rounded-md mb-4 mt-4"
+                      />
+                    </div>
+
+                    <div className="flex items-center justify-between text-gray-500 text-sm ">
+                      <DetailBox />
+                    </div>
+                    <ButtonGroup />
+                    <hr className="border-gray-700 mt-4 -ml-6 -mr-20" />
+                  </div>
+
+                  {/* Post 2 */}
+                  <div className="flex mt-4">
+                    <div className="flex justify-between">
+                      <div>
+                        <h2 className="text-white text-sm font-semibold mb-2 font-martian-mono">
+                          Contrary to popular belief, Lorem Ipsum is not simply
+                          random text. It has roots in a piece
+                        </h2>
+                        <div className="py-2 text-[10px] text-white bg-[#2D2E34] rounded-3xl w-20 flex justify-center font-martian-mono">
+                          Flutter
+                        </div>
+                        <h3 className="font-satoshi mt-3">
+                          https://www.pinterest.com/pin/840907180378
+                        </h3>
+                        <div className="flex items-center justify-between mt-4 text-gray-500 text-sm">
+                          <DetailBox />
+                        </div>
+                        <ButtonGroup />
+                      </div>
+                      <Image
+                        src="/images/python.png"
+                        alt="Python"
+                        width={160}
+                        height={112}
+                        className="mt-9"
+                      />
+                    </div>
+                    <div>
+                      <Ellipsis />
+                    </div>
+                  </div>
+
+                  <hr className="border-gray-700 mt-4 -ml-6 -mr-20" />
+
+                  {/* Post 3 */}
+                  <div className="mt-4">
+                    <h2 className="text-white text-sm font-semibold mb-2 font-martian-mono">
+                      Contrary to popular belief, Lorem Ipsum?
+                    </h2>
+                    <div className="w-full h-72 rounded-md overflow-hidden mb-4 mt-4 relative">
+                      <ReactPlayer
+                        url="https://www.youtube.com/watch?v=LizEf79gBcM"
+                        width="100%"
+                        height="100%"
+                        controls
+                        config={{
+                          youtube: {
+                            playerVars: {
+                              showinfo: 1,
+                              rel: 0,
+                              modestbranding: 1,
+                            },
+                          },
+                        }}
+                        className="absolute top-0 left-0"
+                      />
+                    </div>
+                    <DetailBox />
+                    <ButtonGroup />
+                  </div>
                 </div>
               </div>
               <div className="lg:w-1/4 sticky top-0 mt-4 bg-[#15161A]">
