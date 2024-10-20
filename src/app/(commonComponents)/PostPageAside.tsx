@@ -27,7 +27,7 @@ const PostPageAside = ({ packageId }: { packageId: string }) => {
 
   return (
     <div className="lg:w-1/4 sticky top-0 bg-[#15161A]">
-      <div className="shadow-lg p-4 w-[310px] -mt-2 -ml-5 border border-gray-500 font-martian-mono">
+      <div className="shadow-lg p-4 w-[318px] -mt-2 -ml-5 border border-gray-500 font-martian-mono">
         <div className="text-white">
           {packageData ? (
             <>
