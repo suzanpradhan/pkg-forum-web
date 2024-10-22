@@ -19,6 +19,7 @@ export default function PostList({
 }: {
   params: { packageId: number };
 }) {
+  const { packageId } = params;
   const dispatch = useAppDispatch();
   const [pageIndex, setPageIndex] = useState(1);
 
@@ -58,7 +59,7 @@ export default function PostList({
           <div>No posts available</div>
         ) : (
           postsData?.results.map((post, index) => (
-            <Link key={index} href={`posts/${post.id}`}>
+            <Link key={index} href={`/${packageId}/${post.id}`}>
               <div className="flex">
                 <div className="mr-10 border-r border-gray-700">
                   <div className="container mx-auto -ml-14">

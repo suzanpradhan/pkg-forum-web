@@ -155,20 +155,19 @@
 //   );
 // }
 
-
 "use client";
-import React, { useState } from "react";
-import dynamic from "next/dynamic";
-import { ChevronRight } from "lucide-react";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { EditorState, convertToRaw } from "draft-js";
-import draftToHtml from "draftjs-to-html";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as z from "zod";
-import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/core/redux/clientStore";
 import postApi from "@/modules/posts/postApi";
 import { PostFormInputs, postSchema } from "@/modules/posts/postType";
+import { EditorState, convertToRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ChevronRight } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import * as z from "zod";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -211,7 +210,7 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="w-3/4 border-r pr-4 -mt-4 p-4 border-gray-500">
+    <div className="w-3/4 border-r pr-4  p-4 border-gray-500">
       <div className="flex items-center mt-4">
         <div className="py-2 bg-[#1E1F23] rounded-3xl w-44 flex justify-evenly border border-gray-500">
           <img
