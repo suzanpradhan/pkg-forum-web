@@ -1,10 +1,10 @@
 "use client";
-import ButtonGroup from "@/app/(commonComponents)/ButtonGroup";
+import ButtonGroup from "@/app/(commonComponents)/PostActions";
 import { Share } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-import DetailBox from "@/app/(commonComponents)/detailBox";
+import DetailBox from "@/app/(commonComponents)/PostProfile";
 
 export default function CodeDetail() {
   const flutterCode = `class MyApp extends StatelessWidget {

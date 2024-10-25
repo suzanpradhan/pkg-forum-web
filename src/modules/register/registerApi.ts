@@ -1,7 +1,6 @@
 import { apiPaths } from "@/core/api/apiConstants";
 import { baseApi } from "@/core/api/apiQuery";
 import { RegisterFormInputs } from "./registerType";
-
 const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     register: builder.mutation<any, RegisterFormInputs>({

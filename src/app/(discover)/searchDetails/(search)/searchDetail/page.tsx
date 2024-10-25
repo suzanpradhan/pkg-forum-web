@@ -1,22 +1,7 @@
 "use client";
-import { useState } from "react";
-import DetailBox from "../../../../(commonComponents)/detailBox";
-import BottonGroup from "../../../../(commonComponents)/ButtonGroup";
-import {
-  Users,
-  ThumbsUp,
-  Share,
-  Dot,
-  Globe,
-  Github,
-  ArrowBigUpDash,
-  ArrowBigDown,
-  MessageSquareText,
-  BookmarkMinus,
-  Forward,
-  Plus,
-  Ellipsis,
-} from "lucide-react";
+import { Ellipsis } from "lucide-react";
+import BottonGroup from "../../../../(commonComponents)/PostActions";
+import DetailBox from "../../../../(commonComponents)/PostProfile";
 
 interface Props {
   imgSrc: string;
@@ -43,7 +28,7 @@ export default function SearchDetail() {
                 Flutter
               </div>
               <img
-                src="/images/post1.png"
+                src="/assets/post1.png"
                 alt="Post Image"
                 className="w-full h-48 rounded-md object-cover mb-4 mt-4"
               />
@@ -70,7 +55,7 @@ export default function SearchDetail() {
                 </div>
 
                 <img
-                  src="images/python.png "
+                  src="assets/python.png "
                   alt="python"
                   className="h-28 w-40 mt-9"
                 />

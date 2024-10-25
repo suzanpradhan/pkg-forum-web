@@ -1,6 +1,6 @@
 "use client";
 import { nonempty } from "@/core/utils/formUtils";
-import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
@@ -19,6 +19,7 @@ type LoginFormInputs = z.infer<typeof loginSchema>;
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
   const handleLogin = async (values: LoginFormInputs) => {
     const validation = loginSchema.safeParse(values);
 
@@ -42,7 +43,7 @@ const Login = () => {
         toast.error("Login Failed! Please check your credentials.");
       } else {
         router.replace((result as any)?.callback ?? "/admin/dashboard");
-        toast.success("Successfull  your logged in!");
+        toast.success("Successfully logged in!");
       }
     } catch (error) {
       toast.error("Login Failed! Please check your credentials.");
@@ -51,21 +52,10 @@ const Login = () => {
     }
   };
 
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validate: (values) => {
-      const validation = loginSchema.safeParse(values);
-      return validation.success ? {} : validation.error.format();
-    },
-    onSubmit: handleLogin,
-  });
-
   const validateForm = (values: LoginFormInputs) => {
     try {
       loginSchema.parse(values);
+      return {};
     } catch (error) {
       if (error instanceof ZodError) {
         console.log(error.errors);
@@ -104,7 +94,7 @@ const Login = () => {
         </div>
 
         <Formik
-          initialValues={formik.initialValues}
+          initialValues={{ email: "", password: "" }}
           validate={validateForm}
           onSubmit={handleLogin}
         >
@@ -122,17 +112,6 @@ const Login = () => {
                 className="text-red-500"
               />
 
-              {/* <Field
-                type="password"
-                name="password"
-                placeholder="Your Password"
-                className="w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-gray-200 border-gray-600"
-              />
-              <ErrorMessage
-                name="password"
-                component="p"
-                className="text-red-500"
-              /> */}
               <div className="space-y-4">
                 <div className="relative">
                   <Field

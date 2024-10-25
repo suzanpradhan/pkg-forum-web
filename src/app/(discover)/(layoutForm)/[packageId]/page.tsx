@@ -1,7 +1,7 @@
 "use client";
-import ButtonGroup from "@/app/(commonComponents)/ButtonGroup";
-import PostPageAside from "@/app/(commonComponents)/PostPageAside";
-import DetailBox from "@/app/(commonComponents)/detailBox";
+import PackageCard from "@/app/(commonComponents)/PackageCard";
+import ButtonGroup from "@/app/(commonComponents)/PostActions";
+import DetailBox from "@/app/(commonComponents)/PostProfile";
 import { useAppDispatch, useAppSelector } from "@/core/redux/clientStore";
 import { RootState } from "@/core/redux/store";
 import { PaginatedResponseType } from "@/core/types/responseTypes";
@@ -48,7 +48,7 @@ export default function PostList({
       <div className="flex-1">
         <div className="relative h-36 overflow-hidden -ml-10 -mt-10 w-[137.5%]">
           <Image
-            src="/images/postimg.png"
+            src="/assets/postimg.png"
             alt="Post Image"
             className="object-cover"
             layout="fill"
@@ -80,7 +80,7 @@ export default function PostList({
                       </div>
                       <div className="flex justify-center w-[108.5%]">
                         <img
-                          src="/images/post1.png"
+                          src="/assets/post1.png"
                           alt="Post Image"
                           className="w-full h-auto rounded-md mb-4 mt-4"
                         />
@@ -115,7 +115,7 @@ export default function PostList({
                         <div className="flex ml-40">
                           <div className="mt-2 mr-4 ">
                             <Image
-                              src="/images/python.png"
+                              src="/assets/python.png"
                               alt="Python"
                               width={160}
                               height={112}
@@ -176,7 +176,7 @@ export default function PostList({
             Join
           </button>
         </div>
-        <PostPageAside packageId={params.packageId.toString()} />
+        <PackageCard packageId={params.packageId.toString()} />
       </div>
     </div>
   );

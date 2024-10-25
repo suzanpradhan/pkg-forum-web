@@ -58,7 +58,7 @@ export default function CreatePost() {
       <div className="flex items-center -mt-[765px] -ml-6">
         <div className="py-2 bg-[#1E1F23] rounded-3xl w-36 flex justify-evenly border border-gray-500">
           <img
-            src="/images/fluttericon.png"
+            src="/assets/fluttericon.png"
             alt="flutter"
             className="w-8 h-8"
           />

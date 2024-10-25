@@ -1,14 +1,13 @@
-import { baseApi } from "@/core/api/apiQuery";
 import { apiPaths } from "@/core/api/apiConstants";
-import { PackageType, PackageTypeValidation } from "./packagesType";
+import { baseApi } from "@/core/api/apiQuery";
 import { PaginatedResponseType } from "@/core/types/responseTypes";
+import { PackageType, PackageTypeValidation } from "./packagesType";
 
 const packagesApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     createPackage: builder.mutation<PackageType, Omit<PackageType, "id">>({
       query: (payload) => {
         const { registry, socials, title, description, version } = payload;
-
         const data = {
           registry,
           socials,
@@ -33,11 +32,11 @@ const packagesApi = baseApi.injectEndpoints({
       providesTags: (response) =>
         response
           ? [
-              ...response?.results?.map(
-                ({ id }) => ({ type: "Packages", id: id } as const)
-              ),
-              { type: "Packages", id: "LIST" },
-            ]
+            ...response?.results?.map(
+              ({ id }) => ({ type: "Packages", id: id } as const)
+            ),
+            { type: "Packages", id: "LIST" },
+          ]
           : [{ type: "Packages", id: "LIST" }],
       serializeQueryArgs: ({ endpointName }) => {
         return endpointName;
@@ -61,7 +60,7 @@ const packagesApi = baseApi.injectEndpoints({
         console.log("response", response);
         return response as PackageTypeValidation;
       },
-    }), 
+    }),
 
     // Delete a package by ID
     deletePackage: builder.mutation<void, string>({

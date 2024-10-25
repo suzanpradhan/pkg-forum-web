@@ -5,7 +5,14 @@ import {
   Forward,
   MessageSquareText,
 } from "lucide-react";
-export default function BottonGroup() {
+
+export default function PostActions({
+  firstValue = "5k",
+  secondValue = "2.5k",
+}: {
+  firstValue?: string;
+  secondValue?: string;
+}) {
   return (
     <div className=" flex text-start space-x-4 ">
       <div className=" text-sm font-medium text-white  rounded-3xl w-44  mt-4 flex bg-[#1E1F23] border border-gray-500 justify-center items-center ">
@@ -13,14 +20,14 @@ export default function BottonGroup() {
         <p className="text-white text-xm  font-martian-mono">Upvote</p>
 
         <h3 className=" font-martian-mono relative">
-          5k
+          {firstValue}
           <div className="border-r  border-gray-700 absolute h-10 -mt-7 ml-7"></div>
         </h3>
         <ArrowBigDown className="ml-3" />
       </div>
       <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-3xl w-24  mt-4 flex items-center justify-center border border-gray-500">
         <MessageSquareText />
-        <h3 className=" ml-2">2.5k</h3>
+        <h3 className=" ml-2">{secondValue}</h3>
       </div>
       <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-3xl w-14 mt-4 flex  justify-center items-center border border-gray-500">
         <BookmarkMinus />

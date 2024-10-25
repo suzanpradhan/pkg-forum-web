@@ -1,8 +1,8 @@
 import {
   default as BottonGroup,
   default as ButtonGroup,
-} from "@/app/(commonComponents)/ButtonGroup";
-import DetailBox from "@/app/(commonComponents)/detailBox";
+} from "@/app/(commonComponents)/PostActions";
+import DetailBox from "@/app/(commonComponents)/PostProfile";
 import { Ellipsis } from "lucide-react";
 import Image from "next/image";
 
@@ -47,7 +47,7 @@ export default function ProfilePost() {
         </div>
         <div className="relative w-[300px] h-[112px]">
           <Image
-            src="/images/python.png"
+            src="/assets/python.png"
             alt="Python"
             layout="fill"
             objectFit="contain"

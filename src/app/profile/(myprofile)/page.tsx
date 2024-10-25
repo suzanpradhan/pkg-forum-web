@@ -1,9 +1,6 @@
-import BottonGroup from "@/app/(commonComponents)/ButtonGroup";
-import React from "react";
+import ButtonGroup from "@/app/(commonComponents)/PostActions";
+import DetailBox from "@/app/(commonComponents)/PostProfile";
 import Comment from "../(components)/Comment";
-import Profile from "../(components)/Profile";
-import Function from "../(components)/Function";
-import DetailBox from "@/app/(commonComponents)/detailBox";
 export default function page() {
   return (
     <div className="">
@@ -23,7 +20,7 @@ export default function page() {
           <DetailBox />
         </div>
         <div className="-mt-1">
-        <BottonGroup />
+          <ButtonGroup />
         </div>
         <hr className="border-gray-500 -ml-[25px] -mr-[74px] mt-6" />
       </div>

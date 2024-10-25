@@ -31,11 +31,11 @@ export interface PackageType {
   title: string;
   description: string;
   version: string;
-  packageId: string; 
+  packageId: string;
   githubUrl?: string;
   websiteUrl?: string;
-  cover_image:string;
-  image:string;
+  cover_image: string;
+  image: string;
 }
 const socialSchema = z.object({
   id: z.number(),
@@ -51,8 +51,8 @@ export const packageTypeSchema = z.object({
   version: z.string().pipe(nonempty),
   githubUrl: z.string().optional(),
   websiteUrl: z.string().optional(),
-  cover_image:imageFile.optional().nullable(),
-  image:imageFile.optional().nullable(),
+  cover_image: imageFile.optional().nullable(),
+  image: imageFile.optional().nullable(),
 });
 export type PackageTypeValidation = z.infer<typeof packageTypeSchema>;
 

@@ -8,12 +8,9 @@ export const baseApi = createApi({
     prepareHeaders: async (headers: Headers) => await setHeaders(headers),
   }),
   tagTypes: [
-    "Roles",
-    "Permissions",
-    "UserPermissions",
-    "ContentTypes",
     "Packages",
     "Posts",
+    "register",
   ],
   endpoints: () => ({}),
 });

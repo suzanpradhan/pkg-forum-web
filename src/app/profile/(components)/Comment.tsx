@@ -1,13 +1,12 @@
-import {
-  Dot,
-} from "lucide-react";
-import BottonGroup from "../../(commonComponents)/ButtonGroup";
-export default function Comment() {
+import PostActions from "@/app/(commonComponents)/PostActions";
+import { Dot } from "lucide-react";
+
+export default function CommentComp() {
   return (
     <div className="w-11/12">
       <div className="flex items-center space-x-2">
         <img
-          src="/images/avatar.avif  "
+          src="/assets/avatar.avif  "
           alt="User Avatar"
           className="w-6 h-6 rounded-sm"
         />
@@ -31,9 +30,8 @@ export default function Comment() {
             <p className="text-white text-xs font-martian-mono">2 hours ago</p>
           </div>
         </div>
-        <BottonGroup />
+        <PostActions />
       </div>
-    
     </div>
   );
 }

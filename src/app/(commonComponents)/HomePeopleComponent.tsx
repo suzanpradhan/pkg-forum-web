@@ -1,31 +1,30 @@
-import React from "react";
 import Image from "next/image";
-export default function SearchPageAside() {
+export default function HomePeopleComponent() {
   const profiles = [
     {
       name: "Sumnima Poudel",
       username: "@sumipoudel",
-      avatar: "/images/avatar.avif",
+      avatar: "/assets/avatar.avif",
     },
     {
       name: "John Doe",
       username: "@johndoe",
-      avatar: "/images/avatar.avif",
+      avatar: "/assets/avatar.avif",
     },
     {
       name: "Jane Smith",
       username: "@janesmith",
-      avatar: "/images/avatar.avif",
+      avatar: "/assets/avatar.avif",
     },
     {
       name: "Alice Johnson",
       username: "@alicejohnson",
-      avatar: "/images/avatar.avif",
+      avatar: "/assets/avatar.avif",
     },
     {
       name: "Bob Brown",
       username: "@bobbrown",
-      avatar: "/images/avatar.avif",
+      avatar: "/assets/avatar.avif",
     },
   ];
 

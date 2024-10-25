@@ -7,7 +7,7 @@ export default function Function() {
   const tabs = [
     { tabname: "Packages", link: "/searchDetails" },
     { tabname: "Posts", link: "/searchDetails/searchDetail" },
-    { tabname: "People", link: "" },
+    // { tabname: "People", link: "" },
   ];
   return (
     <div className="flex mt-4">

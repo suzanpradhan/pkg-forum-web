@@ -22,9 +22,9 @@ export async function setHeaders(headers: Headers) {
 export const apiPaths = {
   serverUrl: process.env.NEXT_PUBLIC_SERVER_URL,
   baseUrl: process.env.NEXT_PUBLIC_SERVER_URL + "/api/v1/",
-  loginUrl: "",
-  registerUrl: "auth/register/",
+  loginUrl: "auth/login/",
+  registerUrl: "auth/register",
   packagesUrl: "packages",
   postsUrl: "posts",
-  // createPostUrl: "createPosts",
+  createPostUrl: "createPosts",
 };

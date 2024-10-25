@@ -1,12 +1,12 @@
 import { Dot } from "lucide-react";
 
-export default function DetailBox() {
+export default function PostProfile() {
   return (
     <>
       <div className="  text-gray-500 text-sm ">
         <div className="flex items-center space-x-2 mt-4">
           <img
-            src="/images/avatar.avif"
+            src="/assets/avatar.avif"
             alt="User Avatar"
             className="w-6 h-6 rounded-md"
           />

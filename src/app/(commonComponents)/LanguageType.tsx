@@ -6,31 +6,31 @@ export default function LanguageType() {
       name: "Python",
       members: "120k",
       online: 378,
-      avatar: "/images/flutterIcon.png ",
+      avatar: "/assets/flutterIcon.png ",
     },
     {
       name: "JavaScript",
       members: "98k",
       online: 300,
-      avatar: "/images/flutterIcon.png ",
+      avatar: "/assets/flutterIcon.png ",
     },
     {
       name: "ReactJS",
       members: "85k",
       online: 250,
-      avatar: "/images/flutterIcon.png ",
+      avatar: "/assets/flutterIcon.png ",
     },
     {
       name: "NodeJS",
       members: "70k",
       online: 200,
-      avatar: "/images/flutterIcon.png ",
+      avatar: "/assets/flutterIcon.png ",
     },
     {
       name: "TypeScript",
       members: "60k",
       online: 180,
-      avatar: "/images/flutterIcon.png ",
+      avatar: "/assets/flutterIcon.png ",
     },
   ];
 
