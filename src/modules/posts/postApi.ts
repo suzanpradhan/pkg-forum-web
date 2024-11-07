@@ -8,7 +8,6 @@ const postApi = baseApi.injectEndpoints({
     createPost: builder.mutation<PostType, Omit<PostType, "id">>({
       query: (payload) => {
         const { title, author, content, package: packageType } = payload;
-
         const data = {
           title,
           author,
@@ -23,6 +22,15 @@ const postApi = baseApi.injectEndpoints({
           body: data,
         };
       },
+    }),
+    //updatepost
+    updatePost: builder.mutation<PostType, { id: string; data: Omit<PostType, "id"> }>({
+      query: ({ id, data }) => ({
+        url: `${apiPaths.postsUrl}/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: (result, error, { id }) => [{ type: "Posts", id }],
     }),
 
     // Query to get all posts with pagination

@@ -6,7 +6,7 @@ import PackageCard from "../(commonComponents)/PackageCard";
 export default function Home() {
   const { data: session } = useSession();
   return (
-    <div className="bg-[#15161A] flex flex-1">
+    <div className="bg-[#15161A] flex flex-1 md:shrink-0">
       <div className=" gap-6 p-4 -mt-14 -ml-10 ">
         <PackageCard />
       </div>

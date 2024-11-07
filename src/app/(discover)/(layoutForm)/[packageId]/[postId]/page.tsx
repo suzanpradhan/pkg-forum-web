@@ -16,6 +16,7 @@ export default function PostDetail({
   params: { postId: string; packageId: number };
 }) {
   const dispatch = useAppDispatch();
+
   const postData = useAppSelector(
     (state: RootState) =>
       state.baseApi.queries[`getPostById-${params.postId}`]
@@ -33,6 +34,8 @@ export default function PostDetail({
         {postData ? (
           <div className="bg-[#15161A] mb-6 max-w-full -mx-6 flex items-start -mt-10 py-4">
             <div className=" ">
+              <button className="bg-green text-white ml-80"> Update</button>
+
               <h2 className="text-white text-lg font-semibold  font-martian-mono">
                 {postData.title}
               </h2>

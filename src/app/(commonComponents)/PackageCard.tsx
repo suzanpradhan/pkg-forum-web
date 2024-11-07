@@ -68,7 +68,7 @@ const PackageCard = ({ packageId }: PackageCardProps) => {
     <div className="grid grid-cols-3 gap-6 mt-4 relative w-full">
       {results.map((card) => (
         <Link
-          href={`/${card.id}`} // Link to individual package detail page
+          href={`/${card.id}`} // Link to individual   detail page
           key={card.id}
           className="bg-gray-800 rounded-lg shadow-lg flex-1"
         >
