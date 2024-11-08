@@ -1,5 +1,6 @@
 "use client";
-import { useAppDispatch } from "@/core/redux/clientStore";
+import { useAppDispatch, useAppSelector } from "@/core/redux/clientStore";
+import { RootState } from "@/core/redux/store"; // Adjust the path based on your project structure
 import postApi from "@/modules/posts/postApi";
 import { PostFormInputs, postSchema } from "@/modules/posts/postType";
 import { ErrorMessage, Field, Form, Formik } from "formik";
@@ -21,6 +22,14 @@ export default function PostPage({ params }: PostPageProps) {
 
   const isEditing = Boolean(postId); // Determine editing mode if postId exists
 
+  // Fetch post data from the store based on postId
+  const postData = useAppSelector(
+    (state: RootState) =>
+      state.baseApi.queries[`getPostById(${postId})`]?.data as
+        | PostFormInputs
+        | undefined
+  );
+
   // Initial state setup for the form
   const [initialValues, setInitialValues] = useState<PostFormInputs>({
     title: "",
@@ -29,12 +38,16 @@ export default function PostPage({ params }: PostPageProps) {
     package: 1,
   });
 
-  // Simplified useEffect to fetch post data when postId exists
+  // Single useEffect to fetch and set initialValues
   useEffect(() => {
     if (postId) {
       dispatch(postApi.endpoints.getPostById.initiate(postId));
     }
-  }, [dispatch, postId]);
+
+    if (postData) {
+      setInitialValues(postData);
+    }
+  }, [dispatch, postId, postData]);
 
   // Zod-based validation
   const validateForm = (values: PostFormInputs) => {
@@ -66,7 +79,7 @@ export default function PostPage({ params }: PostPageProps) {
       // Redirect after successful submission
       if (result?.data) {
         const packageId = result.data.id; // Use post ID for navigation
-        router.push(`/app/(discover)/${packageId}`);
+        router.push(`/${packageId}`);
       } else if (result?.error) {
         console.error("Submission failed:", result.error);
       }
