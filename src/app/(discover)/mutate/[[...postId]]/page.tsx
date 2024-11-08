@@ -1,4 +1,5 @@
 "use client";
+import { useGetApiResponse } from "@/core/api/getApiResponse";
 import { useAppDispatch, useAppSelector } from "@/core/redux/clientStore";
 import { RootState } from "@/core/redux/store"; // Adjust the path based on your project structure
 import postApi from "@/modules/posts/postApi";
@@ -34,20 +35,24 @@ export default function PostPage({ params }: PostPageProps) {
   const [initialValues, setInitialValues] = useState<PostFormInputs>({
     title: "",
     author: 1,
-    content: "sfdsfsdf",
+    content: "this is my first project",
     package: 1,
   });
 
   // Single useEffect to fetch and set initialValues
   useEffect(() => {
     if (postId) {
-      dispatch(postApi.endpoints.getPostById.initiate(postId));
+      dispatch(postApi.endpoints.getPostById.initiate(postId)); // Fetch post data if editing
     }
 
     if (postData) {
-      setInitialValues(postData);
+      setInitialValues(postData); // Set initial form values for editing
     }
   }, [dispatch, postId, postData]);
+
+  const toMutatePostData = useGetApiResponse<PostFormInputs>(
+    `getPostById-${params.postId}`
+  );
 
   // Zod-based validation
   const validateForm = (values: PostFormInputs) => {
@@ -79,7 +84,7 @@ export default function PostPage({ params }: PostPageProps) {
       // Redirect after successful submission
       if (result?.data) {
         const packageId = result.data.id; // Use post ID for navigation
-        router.push(`/${packageId}/${postId}`);
+        router.push(`/${packageId}`); // Redirect to post detail page after submission
       } else if (result?.error) {
         console.error("Submission failed:", result.error);
       }
@@ -89,9 +94,9 @@ export default function PostPage({ params }: PostPageProps) {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="w-full max-w-3xl mx-auto -ml-1">
       <div className="border-r border-gray-700 h-screen -mt-10 -mr-4"></div>
-      <div className="flex items-center -mt-[765px] -ml-6">
+      <div className="flex items-center -mt-[765px] ">
         <div className="py-2 bg-[#1E1F23] rounded-3xl w-36 flex justify-evenly border border-gray-500">
           <img
             src="/assets/fluttericon.png"
