@@ -48,10 +48,10 @@ export default function CodeDetail() {
               Contrary to popular belief, Lorem Ipsum?
             </h2>
             <p className="text-[#D2D2D2] text-sm mb-4 font-satoshi">
-              There are many variations of passages of Lorem Ipsum available,
+              {`There are many variations of passages of Lorem Ipsum available,
               but the majority have suffered alteration in some form, by
               injected humour, or randomised words which don't look even
-              slightly believable.
+              slightly believable.`}
             </p>
           </div>
 

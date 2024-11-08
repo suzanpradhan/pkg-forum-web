@@ -7,7 +7,7 @@ import { PostFormInputs, postSchema } from "@/modules/posts/postType";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { ChevronRight } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import * as z from "zod";
 
 interface PostPageProps {
@@ -32,12 +32,12 @@ export default function PostPage({ params }: PostPageProps) {
   );
 
   // Initial state setup for the form
-  const [initialValues, setInitialValues] = useState<PostFormInputs>({
-    title: "",
-    author: 1,
-    content: "this is my first project",
-    package: 1,
-  });
+  // const [initialValues, setInitialValues] = useState<PostFormInputs>({
+  //   title: "",
+  //   author: 1,
+  //   content: "this is my first project",
+  //   package: 1,
+  // });
 
   // Single useEffect to fetch and set initialValues
   useEffect(() => {
@@ -45,9 +45,9 @@ export default function PostPage({ params }: PostPageProps) {
       dispatch(postApi.endpoints.getPostById.initiate(postId)); // Fetch post data if editing
     }
 
-    if (postData) {
-      setInitialValues(postData); // Set initial form values for editing
-    }
+    // if (postData) {
+    //   setInitialValues(postData); // Set initial form values for editing
+    // }
   }, [dispatch, postId, postData]);
 
   const toMutatePostData = useGetApiResponse<PostFormInputs>(
@@ -119,7 +119,7 @@ export default function PostPage({ params }: PostPageProps) {
         onSubmit={onSubmit}
         enableReinitialize
       >
-        {({ values, setFieldValue }) => (
+        {() => (
           <Form>
             <div className="mt-4 -ml-6">
               <h3 className="font-martian-mono text-white text-sm">Title</h3>

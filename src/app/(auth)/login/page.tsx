@@ -98,7 +98,7 @@ const Login = () => {
           validate={validateForm}
           onSubmit={handleLogin}
         >
-          {({ errors, touched }) => (
+          {() => (
             <Form className="mt-4 space-y-4">
               <Field
                 type="email"
@@ -159,7 +159,7 @@ const Login = () => {
 
         <Link href="/register">
           <p className="mt-4 text-sm text-center text-white">
-            Don't have an account?{" "}
+            {`Don't have an account?`}{" "}
             <span className="text-blue-500 hover:underline">Sign Up</span>
           </p>
         </Link>

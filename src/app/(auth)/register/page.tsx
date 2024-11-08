@@ -59,7 +59,7 @@ const Register = () => {
           Registration
         </h2>
         <p className="text-sm text-center text-gray-200 font-martian-mono">
-          Let's create an account
+          {`Let's create an account`}
         </p>
         <button
           onClick={handleGoogleSignIn}
