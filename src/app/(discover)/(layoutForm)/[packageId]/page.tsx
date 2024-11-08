@@ -176,7 +176,9 @@ export default function PostList({
             Join
           </button>
         </div>
-        <PackageCard packageId={params.packageId.toString()} />
+        <div className="w-[300%]">
+          <PackageCard packageId={params.packageId.toString()} />
+        </div>
       </div>
     </div>
   );
