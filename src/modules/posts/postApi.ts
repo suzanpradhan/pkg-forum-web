@@ -5,43 +5,36 @@ import { PostFormInputs, PostType } from "./postType";
 
 const postApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    createPost: builder.mutation<PostType, Omit<PostType, "id">>({
+    createPost: builder.mutation<PostType, PostFormInputs>({
       query: (payload) => {
-        const { title, author, content, package: packageType } = payload;
-        const data = {
-          title,
-          author,
-          content,
-          package: packageType,
-
-        };
-
         return {
           url: apiPaths.postsUrl + "/",
           method: "POST",
-          body: data,
+          body: payload,
         };
       },
     }),
     //updatepost
-    updatePost: builder.mutation<PostType, { id: string; data: Omit<PostType, "id"> }>({
-      query: ({ id, data }) => ({
-        url: `${apiPaths.postsUrl}/${id}`,
+    updatePost: builder.mutation<PostType, PostFormInputs>({
+      query: (payload) => ({
+        url: `${apiPaths.postsUrl}/${payload.id}`,
         method: "PATCH",
-        body: data,
+        body: payload,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: "Posts", id }],
+      invalidatesTags: (result, error, { id }) => [
+        { type: "Posts", id: id ?? 0 },
+      ],
     }),
 
     // Query to get all posts with pagination
-    getAllPosts: builder.query<PaginatedResponseType<PostFormInputs>, number>({
+    getAllPosts: builder.query<PaginatedResponseType<PostType>, number>({
       query: (pageNumber) => `${apiPaths.postsUrl}/?page=${pageNumber}`,
       providesTags: (response) =>
         response
           ? [
-            ...response.results.map(() => ({ type: "Posts" } as const)),
-            { type: "Posts", id: "LIST" },
-          ]
+              ...response.results.map(() => ({ type: "Posts" } as const)),
+              { type: "Posts", id: "LIST" },
+            ]
           : [{ type: "Posts", id: "LIST" }],
       serializeQueryArgs: ({ endpointName }) => {
         return endpointName;
@@ -49,7 +42,7 @@ const postApi = baseApi.injectEndpoints({
       forceRefetch({ currentArg, previousArg }) {
         return currentArg !== previousArg;
       },
-      transformResponse: (response: PaginatedResponseType<PostFormInputs>) => {
+      transformResponse: (response: PaginatedResponseType<PostType>) => {
         return response;
       },
     }),

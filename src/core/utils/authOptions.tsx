@@ -39,13 +39,36 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger }) {
       if (user) {
         token = {
           accessToken: (user as any).access,
           refreshToken: (user as any).refresh,
         };
       }
+      if (trigger == "update" || trigger == "signIn") {
+        const response = await fetch(
+          `${apiPaths.baseUrl}${apiPaths.myProfileUrl}`,
+          {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${token.accessToken}`,
+              accept: "application/json",
+            },
+          }
+        );
+
+        if (response.ok) {
+          const responseData = await response.json();
+          token.email = responseData.email;
+          token.username = responseData.username;
+          // token.isStaff = responseData.is_staff;
+          token.id = responseData.id;
+          return Promise.resolve(token);
+        }
+      }
+      console.log("token", token);
+
       return Promise.resolve(token);
     },
     async session({ session, token }) {

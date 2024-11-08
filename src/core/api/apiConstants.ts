@@ -27,4 +27,5 @@ export const apiPaths = {
   packagesUrl: "packages",
   postsUrl: "posts",
   createPostUrl: "createPosts",
+  myProfileUrl: "profiles/me/",
 };

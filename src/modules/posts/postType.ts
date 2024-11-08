@@ -5,13 +5,13 @@ export interface PostType {
   title: string;
   content: string;
   author: number;
-  package: number;
+  package?: number;
 }
 export const postSchema = z.object({
   id: z.number().optional().nullable(),
   title: z.string().pipe(nonempty),
-  content: z.string(),
+  content: z.string().pipe(nonempty),
   author: z.number(),
-  package: z.number()
+  package: z.number().optional(),
 });
 export type PostFormInputs = z.infer<typeof postSchema>;
