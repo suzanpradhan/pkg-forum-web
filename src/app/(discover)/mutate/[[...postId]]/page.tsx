@@ -51,7 +51,7 @@ export default function PostPage({ params }: PostPageProps) {
   }, [dispatch, postId, postData]);
 
   const toMutatePostData = useGetApiResponse<PostFormInputs>(
-    `getPostById-${params.postId}`
+    `getPostById-${params.postId ? params.postId : undefined}`
   );
 
   // Zod-based validation
@@ -114,7 +114,7 @@ export default function PostPage({ params }: PostPageProps) {
       </div>
 
       <Formik
-        initialValues={initialValues}
+        initialValues={toMutatePostData}
         validate={validateForm}
         onSubmit={onSubmit}
         enableReinitialize
