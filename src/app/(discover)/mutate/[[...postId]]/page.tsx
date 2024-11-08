@@ -34,7 +34,7 @@ export default function PostPage({ params }: PostPageProps) {
   const [initialValues, setInitialValues] = useState<PostFormInputs>({
     title: "",
     author: 1,
-    content: "",
+    content: "sfdsfsdf",
     package: 1,
   });
 
@@ -79,7 +79,7 @@ export default function PostPage({ params }: PostPageProps) {
       // Redirect after successful submission
       if (result?.data) {
         const packageId = result.data.id; // Use post ID for navigation
-        router.push(`/${packageId}`);
+        router.push(`/${packageId}/${postId}`);
       } else if (result?.error) {
         console.error("Submission failed:", result.error);
       }

@@ -10,7 +10,7 @@ export interface PostType {
 export const postSchema = z.object({
   id: z.number().optional().nullable(),
   title: z.string().pipe(nonempty),
-  content: z.string().pipe(nonempty),
+  content: z.string(),
   author: z.number(),
   package: z.number()
 });
