@@ -1,7 +1,7 @@
 "use client";
 import { useGetApiResponse } from "@/core/api/getApiResponse";
 import { useAppDispatch, useAppSelector } from "@/core/redux/clientStore";
-import { RootState } from "@/core/redux/store"; // Adjust the path based on your project structure
+import { RootState } from "@/core/redux/store";
 import postApi from "@/modules/posts/postApi";
 import { PostFormInputs, postSchema, PostType } from "@/modules/posts/postType";
 import { Form, Formik } from "formik";
@@ -53,21 +53,26 @@ export default function PostPage({ params }: PostPageProps) {
 
   const onSubmit = async (values: PostFormInputs) => {
     try {
-      let result;
-      if (params.postId) {
-        result = await dispatch(postApi.endpoints.updatePost.initiate(values));
+      let data;
+      if (postId) {
+        // Use postId in the request if it's defined
+        data = await dispatch(
+          postApi.endpoints.updatePost.initiate({
+            id: parseInt(postId),
+            ...values,
+          })
+        );
       } else {
-        result = await dispatch(postApi.endpoints.createPost.initiate(values));
+        // Create new post if postId is not defined
+        data = await dispatch(postApi.endpoints.createPost.initiate(values));
       }
 
-      if (result?.data) {
-        const packageId = result.data.id; // Use post ID for navigation
-        router.push(`/${packageId}`); // Redirect to post detail page after submission
-      } else if (result?.error) {
-        console.error("Submission failed:", result.error);
+      if (data?.data) {
+        const packageId = data.data.id;
+        router.push(`/${packageId}`);
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.log(error);
     }
   };
 

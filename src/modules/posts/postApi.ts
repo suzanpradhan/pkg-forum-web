@@ -10,14 +10,20 @@ const postApi = baseApi.injectEndpoints({
         return {
           url: apiPaths.postsUrl + "/",
           method: "POST",
-          body: payload,
+          body: {
+            title: payload.title,
+            content: payload.content,
+          },
+          headers: {
+            "Content-type": "application/json",
+          },
         };
       },
     }),
     //updatepost
     updatePost: builder.mutation<PostType, PostFormInputs>({
       query: (payload) => ({
-        url: `${apiPaths.postsUrl}/${payload.id}`,
+        url: `${apiPaths.postsUrl}/${payload.id}/`,
         method: "PATCH",
         body: payload,
       }),
@@ -45,6 +51,17 @@ const postApi = baseApi.injectEndpoints({
       transformResponse: (response: PaginatedResponseType<PostType>) => {
         return response;
       },
+    }),
+
+    deletePost: builder.mutation<void, string>({
+      query: (id) => ({
+        url: `${apiPaths.postsUrl}/${id}/`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (result, error, id) => [
+        { type: "Posts", id }, // Invalidate the deleted post from the cache
+        { type: "Posts", id: "LIST" }, // Optionally invalidate the post list
+      ],
     }),
 
     // Get each post by id

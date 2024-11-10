@@ -6,8 +6,8 @@ import { useAppDispatch, useAppSelector } from "@/core/redux/clientStore";
 import { RootState } from "@/core/redux/store";
 import postApi from "@/modules/posts/postApi";
 import { PostFormInputs } from "@/modules/posts/postType";
-import parse from "html-react-parser";
 import { Navigation } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import CommentComp from "../../CommentComp";
 export default function PostDetail({
@@ -16,6 +16,7 @@ export default function PostDetail({
   params: { postId: string; packageId: number };
 }) {
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const postData = useAppSelector(
     (state: RootState) =>
@@ -28,19 +29,47 @@ export default function PostDetail({
       dispatch(postApi.endpoints.getPostById.initiate(params.postId));
   }, [dispatch, params.postId]);
 
+  const handleUpdateClick = () => {
+    router.push(`/mutate/${params.postId}`);
+  };
+
+  const handleDeleteClick = async () => {
+    try {
+      await dispatch(
+        postApi.endpoints.deletePost.initiate(params.postId)
+      ).unwrap();
+
+      router.push(`/mutate`);
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  };
+
   return (
     <div className=" flex flex-1">
       <div className=" max-w-[72%]  border-gray-700">
         {postData ? (
           <div className="bg-[#15161A] mb-6 max-w-full -mx-6 flex items-start -mt-10 py-4">
             <div className=" ">
-              <button className="bg-green text-white ml-80"> Update</button>
+              <button
+                onClick={handleUpdateClick}
+                className="bg-green text-white ml-80"
+              >
+                Update
+              </button>
+
+              <button
+                onClick={handleDeleteClick}
+                className="ml-10 bg-red-600 text-white px-4 py-2 rounded"
+              >
+                Delete
+              </button>
 
               <h2 className="text-white text-lg font-semibold  font-martian-mono">
                 {postData.title}
               </h2>
               <p className="text-[#D2D2D2] text-base  font-satoshi mt-2">
-                {parse(postData.content)}
+                {postData.content}
               </p>
 
               <img
@@ -89,7 +118,7 @@ export default function PostDetail({
           <p> Loading post details</p>
         )}
       </div>
-      <div className="ml-10">
+      <div className="ml-10 w-96">
         <PackageCard packageId={params.packageId?.toString()} />
       </div>
     </div>
