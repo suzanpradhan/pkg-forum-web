@@ -13,6 +13,8 @@ const postApi = baseApi.injectEndpoints({
           body: {
             title: payload.title,
             content: payload.content,
+            author: payload.author,
+            package: payload.author,
           },
           headers: {
             "Content-type": "application/json",

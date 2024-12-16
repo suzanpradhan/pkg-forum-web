@@ -30,9 +30,11 @@ export default function HomePeopleComponent() {
 
   return (
     <>
-      <div className="border border-[#2D323B]  rounded-lg p-4  w-80   ">
+      <div className="border border-[#2D323B]  rounded-lg p-4  md:w-80 w-40 ">
         <div>
-          <h3 className="text-white text-base font-martian-mono">People</h3>
+          <h3 className="text-white lg:text-base text-xs font-martian-mono">
+            People
+          </h3>
         </div>
 
         <div className="">

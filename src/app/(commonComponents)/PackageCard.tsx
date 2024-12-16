@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 interface PackageCardProps {
   packageId?: string; // Optional prop for individual package
 }
-
 const PackageCard = ({ packageId }: PackageCardProps) => {
   const dispatch = useAppDispatch();
   const [pageIndex, setPageIndex] = useState(1);
@@ -65,12 +64,12 @@ const PackageCard = ({ packageId }: PackageCardProps) => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-4 relative w-full laptop:grid-cols-3">
+    <div className="flex flex-wrap gap-6 mt-4">
       {results.map((card) => (
         <Link
-          href={`/${card.id}`} // Link to individual   detail page
+          href={`/${card.id}`}
           key={card.id}
-          className="bg-gray-800 rounded-lg shadow-lg flex-1"
+          className="bg-gray-800 rounded-lg shadow-lg flex-1 "
         >
           <div className="flex items-center justify-between">
             <div className="relative h-12 w-full">
@@ -97,7 +96,7 @@ const PackageCard = ({ packageId }: PackageCardProps) => {
             </div>
           </div>
 
-          <div className="flex mt-4 ml-40">
+          <div className="flex  justify-end">
             <img
               src="/assets/pub.png"
               alt="Flutter"
@@ -143,13 +142,13 @@ const PackageCard = ({ packageId }: PackageCardProps) => {
           <div className="flex justify-between items-center p-4">
             <div className="flex items-center text-gray-400 space-x-1">
               <Users className="h-4 w-4 text-red-500" />
-              <span className="text-xs font-martian-mono text-white">
+              <span className="text-xs font-martian-mono text-white whitespace-nowrap">
                 882 Members
               </span>
             </div>
             <div className="flex items-center text-gray-400 space-x-1">
               <Dot className="h-6 w-6 text-green-500" />
-              <span className="text-xs font-martian-mono text-white">
+              <span className="text-xs font-martian-mono text-white whitespace-nowrap">
                 285 Online
               </span>
             </div>

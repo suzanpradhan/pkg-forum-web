@@ -11,7 +11,7 @@ export const postSchema = z.object({
   id: z.number().optional().nullable(),
   title: z.string().pipe(nonempty),
   content: z.string().pipe(nonempty),
-  author: z.number(),
+  author: z.number().optional(),
   package: z.number().optional(),
 });
 export type PostFormInputs = z.infer<typeof postSchema>;

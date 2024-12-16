@@ -9,6 +9,8 @@ import { ChevronRight } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import * as z from "zod";
 
 interface PostPageProps {
@@ -16,7 +18,6 @@ interface PostPageProps {
     postId?: string[];
   };
 }
-
 export default function PostPage({ params }: PostPageProps) {
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -55,30 +56,40 @@ export default function PostPage({ params }: PostPageProps) {
     try {
       let data;
       if (postId) {
-        // Use postId in the request if it's defined
         data = await dispatch(
           postApi.endpoints.updatePost.initiate({
             id: parseInt(postId),
             ...values,
           })
         );
+        if (data?.error) {
+          throw new Error("Failed to update post.");
+        }
+        toast.success("Post updated successfully!");
       } else {
-        // Create new post if postId is not defined
         data = await dispatch(postApi.endpoints.createPost.initiate(values));
+        if (data?.error) {
+          throw new Error("Failed to create post.");
+        }
+        toast.success("Post created successfully!");
       }
 
       if (data?.data) {
         const packageId = data.data.id;
-        router.push(`/${packageId}`);
+        router.push(`/posts/${packageId}`);
       }
     } catch (error) {
-      console.log(error);
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
     }
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto -ml-1">
-      <div className="border-r border-gray-700 h-screen -mt-10 -mr-4"></div>
+    <div className="w-full max-w-3xl mx-auto md:-ml-1">
+      <div className="border-r border-gray-700 h-screen md:-mt-10 -mr-4"></div>
       <div className="flex items-center -mt-[765px] ">
         <div className="py-2 bg-[#1E1F23] rounded-3xl w-36 flex justify-evenly border border-gray-500">
           <img
@@ -143,6 +154,7 @@ export default function PostPage({ params }: PostPageProps) {
           </Form>
         )}
       </Formik>
+      <ToastContainer />
     </div>
   );
 }
