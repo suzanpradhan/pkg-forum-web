@@ -64,14 +64,12 @@ export default function PostDetail({
               >
                 Delete
               </button>
-
               <h2 className="text-white text-lg font-semibold  font-martian-mono">
                 {postData.title}
               </h2>
               <p className="text-[#D2D2D2] text-base  font-satoshi mt-2">
                 {postData.content}
               </p>
-
               <img
                 src="/assets/post1.png"
                 alt="Post Image"
@@ -79,7 +77,6 @@ export default function PostDetail({
               />
               <PostProfile />
               <PostActions />
-
               <div className="py-2  text-sm font-medium text-white bg-[#1E1F23] rounded-xl  w-full mt-4 flex  justify-between border border-gray-500">
                 <div className="flex items-center">
                   <img
@@ -92,7 +89,6 @@ export default function PostDetail({
                 <Navigation className=" mt-2 mr-4" />
               </div>
               <CommentComp />
-
               <div className="relative border-l border-transparent">
                 <div className="absolute  left-0 h-[68%] border-l border-gray-700 ml-3 mt-6"></div>
                 <CommentComp />
@@ -109,7 +105,6 @@ export default function PostDetail({
                   </div>
                 </div>
               </div>
-
               <CommentComp />
             </div>
             <div className="border-r border-gray-700 -mt-4  -mr-6 ml-4 h-[230vh] "></div>

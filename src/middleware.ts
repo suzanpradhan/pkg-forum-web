@@ -1,43 +1,39 @@
-import { NextResponse } from 'next/server';
-import { z } from 'zod';
-import { registerSchema } from './modules/register/registerType';
+import { getToken } from "next-auth/jwt";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
-const loginSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters long"),
-})
+export async function middleware(req: NextRequest) {
+  const token = await getToken({ req, secret: process.env.JWT_SECRET });
+  const { pathname } = req.nextUrl;
 
-export async function middleware(request: Request) {
-  const body = await request.json();
-
-  if (request.method === 'POST') {
-    if (request.url.includes('/api/register')) {
-
-      try {
-        registerSchema.parse(body);
-        return NextResponse.next();
-      } catch (error) {
-        if (error instanceof z.ZodError) {
-          return NextResponse.json({ errors: error.errors }, { status: 400 });
-        }
-        return NextResponse.json({ error: "Internal server error" }, { status: 500 });
-      }
-    }
-    if (request.url.includes('/api/login')) {
-
-      try {
-        loginSchema.parse(body);
-        return NextResponse.next();
-      } catch (error) {
-        if (error instanceof z.ZodError) {
-          return NextResponse.json({ errors: error.errors }, { status: 400 });
-        }
-        return NextResponse.json({ error: "Internal server error" }, { status: 500 });
-      }
-    }
+  if (!process.env.JWT_SECRET) {
+    throw new Error("JWT_SECRET is not defined in environment variables.");
   }
+
+  // Allow static files and assets
+  if (pathname.startsWith("/_next/")) {
+    return NextResponse.next();
+  }
+
+  // Redirect authenticated users from `/login` to `/`
+  if (token && pathname === "/login") {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+
+  // Redirect unauthenticated users from `/` or `/login`
+  if (!token && pathname === "/") {
+    return NextResponse.redirect(
+      new URL(
+        `/login?callback=${encodeURIComponent(req.url)}`,
+        req.nextUrl.origin
+      )
+    );
+  }
+
+  // Allow authenticated users to access `/profile` or other pages
   return NextResponse.next();
 }
+
 export const config = {
-  matcher: ['/api/register', '/api/login'],
+  matcher: ["/", "/login"],
 };

@@ -113,6 +113,7 @@ export default function PostPage({ params }: PostPageProps) {
           content: toMutatePostData?.content ?? "",
           package: toMutatePostData?.package ?? 1,
           title: toMutatePostData?.title ?? "",
+          tags: toMutatePostData?.tags ?? "",
         }}
         validate={validateForm}
         onSubmit={onSubmit}
@@ -127,6 +128,15 @@ export default function PostPage({ params }: PostPageProps) {
                 className="py-2 bg-[#1E1F23] rounded-lg w-full flex border border-gray-500 mt-4"
                 placeholder="Enter post title"
                 {...formik.getFieldProps("title")}
+              />
+            </div>
+            <div className="mt-4 -ml-6">
+              <h3 className="font-martian-mono text-white text-sm">Tags</h3>
+              <input
+                type="text"
+                className="py-2 bg-[#1E1F23] rounded-lg w-full flex border border-gray-500 mt-4"
+                placeholder="Enter post tags"
+                {...formik.getFieldProps("tags")}
               />
             </div>
             <div className="mt-4 -ml-6">

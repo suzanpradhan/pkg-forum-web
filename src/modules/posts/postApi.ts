@@ -13,6 +13,7 @@ const postApi = baseApi.injectEndpoints({
           body: {
             title: payload.title,
             content: payload.content,
+            tags: payload.tags,
             author: payload.author,
             package: payload.author,
           },

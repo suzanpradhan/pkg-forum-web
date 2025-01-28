@@ -1,10 +1,9 @@
 "use client";
+import { Input } from "@/components/ui/input";
 import { nonempty } from "@/core/utils/formUtils";
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { Eye, EyeOff } from "lucide-react";
+import { useFormik } from "formik";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import router from "next/router";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { z, ZodError } from "zod";
@@ -42,7 +41,7 @@ const Login = () => {
       if (result?.error) {
         toast.error("Login Failed! Please check your credentials.");
       } else {
-        router.replace((result as any)?.callback ?? "/admin/dashboard");
+        // router.replace((result as any)?.callback ?? "/admin/dashboard");
         toast.success("Successfully logged in!");
       }
     } catch (error) {
@@ -63,6 +62,17 @@ const Login = () => {
       }
     }
   };
+
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validateOnChange: true,
+    onSubmit: handleLogin,
+    validate: validateForm,
+  });
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#15161A]">
@@ -93,69 +103,40 @@ const Login = () => {
           <span className="w-1/5 border-b border-gray-500 lg:w-1/4"></span>
         </div>
 
-        <Formik
-          initialValues={{ email: "", password: "" }}
-          validate={validateForm}
-          onSubmit={handleLogin}
+        <form
+          className="flex flex-col items-end gap-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+            formik.handleSubmit(e);
+          }}
         >
-          {() => (
-            <Form className="mt-4 space-y-4">
-              <Field
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                className="w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-gray-200 border-gray-600"
-              />
-              <ErrorMessage
-                name="email"
-                component="p"
-                className="text-red-500"
-              />
+          <Input
+            className="text-white"
+            placeholder="Email Address"
+            error={formik.touched.email ? formik.errors.email : undefined}
+            {...formik.getFieldProps("email")}
+          />
+          <Input
+            className="text-white"
+            placeholder="Password"
+            type="password"
+            error={formik.touched.password ? formik.errors.password : undefined}
+            {...formik.getFieldProps("password")}
+          />
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full flex justify-center py-2 px-4 border border-transparent text-sm text-black bg-[#169AD6] font-helvetica font-normal"
+          >
+            {isLoading ? "Loading..." : "Login"}
+          </button>
+        </form>
 
-              <div className="space-y-4">
-                <div className="relative">
-                  <Field
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    placeholder="Your Password"
-                    className="w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-gray-200 border-gray-600"
-                  />
-                  <div
-                    className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
-                    onClick={() => setShowPassword((prev) => !prev)}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="w-5 h-5 text-gray-400" />
-                    ) : (
-                      <Eye className="w-5 h-5 text-gray-400" />
-                    )}
-                  </div>
-                  <ErrorMessage
-                    name="password"
-                    component="p"
-                    className="text-red-500"
-                  />
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <Link
-                  href="/resetPassword/reset-password"
-                  className="text-sm text-blue-500 hover:underline"
-                >
-                  Forgot Password?
-                </Link>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-2 text-sm font-medium text-white bg-purple-600 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
-              >
-                {isLoading ? "Logging in..." : "Login"}
-              </button>
-            </Form>
-          )}
-        </Formik>
+        <Link href="/resetPassword/reset-password">
+          <p className="mt-4 text-sm text-center text-white">
+            Forgot Password?
+          </p>
+        </Link>
 
         <Link href="/register">
           <p className="mt-4 text-sm text-center text-white">

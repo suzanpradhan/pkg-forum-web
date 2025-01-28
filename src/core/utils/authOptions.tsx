@@ -64,6 +64,7 @@ export const authOptions: NextAuthOptions = {
           token.username = responseData.username;
           // token.isStaff = responseData.is_staff;
           token.id = responseData.id;
+          console.log("profiletoken ", token);
           return Promise.resolve(token);
         }
       }

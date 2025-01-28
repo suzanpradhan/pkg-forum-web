@@ -6,7 +6,7 @@ export default function page() {
     <div className="">
       <div className="-ml-12">
         <h2 className="text-white text-lg font-martian-mono mb-2 ">
-          Contrary to popular belief, Lorem Ipsum?
+          my name is bishnu
         </h2>
         <p className=" text-base text-[#D2D2D2] font-satoshi -mt-1">
           There are many variations of passages of Lorem Ipsum available, but

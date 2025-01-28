@@ -44,7 +44,7 @@ export default function PostList({
   }
 
   return (
-    <div className="flex">
+    <div className="flex flex-wrap w-full">
       <div className="flex-1">
         <div className="relative h-36 overflow-hidden -ml-10 -mt-10 w-[137.5%]">
           <Image
@@ -72,6 +72,9 @@ export default function PostList({
                           <Ellipsis />
                         </div>
                       </div>
+                      <h2 className="text-white text-lg font-martian-mono mb-2">
+                        <p>Python</p>
+                      </h2>
                       <p className="text-[#D2D2D2] text-base mb-4 font-satoshi">
                         {parse(post.content)}
                       </p>
@@ -176,7 +179,7 @@ export default function PostList({
             Join
           </button>
         </div>
-        <div className="w-[300%]">
+        <div className="">
           <PackageCard packageId={params.packageId.toString()} />
         </div>
       </div>

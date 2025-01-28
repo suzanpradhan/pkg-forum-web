@@ -1,6 +1,6 @@
 import React from "react";
-import Profile from "./(components)/Profile";
 import Function from "./(components)/Function";
+import Profile from "./(components)/Profile";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Profile />
         </div>
       </div>
-      <div className="flex-1 h-screen"> 
+      <div className="flex-1 h-screen">
         <Function />
         <div className="p-10 py-4">{children}</div>
       </div>

@@ -26,6 +26,5 @@ export const apiPaths = {
   registerUrl: "auth/register",
   packagesUrl: "packages",
   postsUrl: "posts",
-  // createPostUrl: "createPosts",
   myProfileUrl: "profiles/me/",
 };

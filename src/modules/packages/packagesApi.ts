@@ -32,11 +32,11 @@ const packagesApi = baseApi.injectEndpoints({
       providesTags: (response) =>
         response
           ? [
-            ...response?.results?.map(
-              ({ id }) => ({ type: "Packages", id: id } as const)
-            ),
-            { type: "Packages", id: "LIST" },
-          ]
+              ...response?.results?.map(
+                ({ id }) => ({ type: "Packages", id: id } as const)
+              ),
+              { type: "Packages", id: "LIST" },
+            ]
           : [{ type: "Packages", id: "LIST" }],
       serializeQueryArgs: ({ endpointName }) => {
         return endpointName;
